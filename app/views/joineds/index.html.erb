@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Joineds</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Order</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @joineds.each do |joined| %>
+      <tr>
+        <td><%= joined.order %></td>
+        <td><%= joined.user %></td>
+        <td><%= link_to 'Show', joined %></td>
+        <td><%= link_to 'Edit', edit_joined_path(joined) %></td>
+        <td><%= link_to 'Destroy', joined, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Joined', new_joined_path %>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  amount: 1
+  price: 1
+  comment: MyString
+  joined: one
+
+two:
+  name: MyString
+  amount: 1
+  price: 1
+  comment: MyString
+  joined: two

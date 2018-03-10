@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Order:</strong>
+  <%= @joined.order %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @joined.user %>
+</p>
+
+<%= link_to 'Edit', edit_joined_path(@joined) %> |
+<%= link_to 'Back', joineds_path %>
