@@ -5,6 +5,7 @@ class GroupsController < ApplicationController
   # GET /groups.json
   def index
     @groups = Group.all
+    @userGroups = Group.where("user_id = ? ", current_user.id)
   end
 
   # GET /groups/1
@@ -27,8 +28,9 @@ class GroupsController < ApplicationController
     @group = Group.new(group_params)
 
     respond_to do |format|
+      @group.user_id = current_user.id
       if @group.save
-        format.html { redirect_to @group, notice: 'Group was successfully created.' }
+        format.html { redirect_to groups_path, notice: 'Group was successfully created.' }
         format.json { render :show, status: :created, location: @group }
       else
         format.html { render :new }

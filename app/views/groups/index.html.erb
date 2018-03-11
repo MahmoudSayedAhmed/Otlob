@@ -1,29 +1,52 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Groups</h1>
-
+<h3>Adding group</h3>
+<%= render 'form', group: Group.new %>
+<h3>My Groups</h3>
 <table>
   <thead>
     <tr>
       <th>Name</th>
-      <th>User</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @groups.each do |group| %>
-      <tr>
-        <td><%= group.name %></td>
-        <td><%= group.user %></td>
-        <td><%= link_to 'Show', group %></td>
-        <td><%= link_to 'Edit', edit_group_path(group) %></td>
-        <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <% @userGroups.each do |group| %>
+      <% if group.user_id == current_user.id%>
+        <tr>
+          <td><%= group.name %></td>
+          <td><%= link_to 'Edit', edit_group_path(group) %></td>
+          <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
+</br>
+<h3><%= @userGroups.first.name %></h3>
+<p>your friend name</p>
+<input id="friend">
+<button onclick="posting()">add</button>
+<% @userGroups.first.friendships.each do |fs| %>
+ <%= User.find(fs.friend_id).name %>
+<% end %>
 
-<br>
 
-<%= link_to 'New Group', new_group_path %>
+
+
+<script type="text/javascript">
+    function posting(){
+      fname = $("#friend").val()
+        $.ajax({ 
+            method: 'post',
+            url: '/friendships_groups', 
+            data: {friendName:fname, group_id:'<%=@userGroups.first.id%>'}
+        })
+    }
+</script>
+
+
+
+
