@@ -5,9 +5,10 @@ Rails.application.routes.draw do
   resources :inviteds
   resources :friendships
   resources :orders
+  resources :friendships_groups
   devise_for :users
   get 'home/index'
-
+  
   resources :users
   root to: "home#index"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
