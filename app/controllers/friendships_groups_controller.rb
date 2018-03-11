@@ -5,10 +5,10 @@ class FriendshipsGroupsController < ApplicationController
 		@friend = User.find_by name: params[:friendName]
 		@friendship = Friendship.where("user_id = ? AND friend_id = ?", current_user.id, @friend.id).first
 		@join = FriendshipsGroup.new(:friendship_id => @friendship.id, :group_id => params[:group_id])
-		@friendships = @group.friendships
+		@data = User.find(@friendship.friend_id).name
 		respond_to do |format|
 			if @join.save
-    			format.json { render json: @friendships }
+    			format.json { render json: {"str": @data} }
       			format.js { render "file"}
       		end
   		end

@@ -28,25 +28,27 @@
 <h3><%= @userGroups.first.name %></h3>
 <p>your friend name</p>
 <input id="friend">
-<button onclick="posting()">add</button>
-<% @userGroups.first.friendships.each do |fs| %>
- <%= User.find(fs.friend_id).name %>
-<% end %>
+<button onclick="addFriendToGroup()">add</button>
+<div id="friendList">
+  <% @userGroups.first.friendships.each do |fs| %>
+    <p><%= User.find(fs.friend_id).name %></p>
+  <% end %>
+</div>
 
 
 
 
 <script type="text/javascript">
-    function posting(){
+    function addFriendToGroup(){
       fname = $("#friend").val()
         $.ajax({ 
             method: 'post',
             url: '/friendships_groups', 
-            data: {friendName:fname, group_id:'<%=@userGroups.first.id%>'}
+            data: {friendName:fname, group_id:'<%=@userGroups.first.id%>'},
+            success: function(result){$("#friendList").append('<p>'+result["str"]+'</p>')}
         })
     }
 </script>
-
 
 
 
