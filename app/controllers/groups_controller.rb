@@ -25,16 +25,10 @@ class GroupsController < ApplicationController
   # POST /groups
   # POST /groups.json
   def create
-    @group = Group.new(group_params)
-
+    @group = Group.new(:name => params[:name], :user_id => params[:user_id])
     respond_to do |format|
-      @group.user_id = current_user.id
       if @group.save
-        format.html { redirect_to groups_path, notice: 'Group was successfully created.' }
-        format.json { render :show, status: :created, location: @group }
-      else
-        format.html { render :new }
-        format.json { render json: @group.errors, status: :unprocessable_entity }
+        format.json { render json: {"str": @group.name} }
       end
     end
   end
@@ -67,10 +61,5 @@ class GroupsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_group
       @group = Group.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def group_params
-      params.require(:group).permit(:name, :user_id)
     end
 end
