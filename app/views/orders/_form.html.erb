@@ -12,19 +12,24 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :type %>
-    <%= form.check_box :type, id: :order_type %>
+    <%= form.label :orderType %>
+    <%= form.select( :orderType,  [ ["breakfast", 0], ['lunch', 1] ] )%>
+
   </div>
 
   <div class="field">
     <%= form.label :place %>
-    <%= form.text_field :place, id: :order_place %>
+    <%= form.text_field :place %>
   </div>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id, id: :order_user_id %>
-  </div>
+   <div class="field">
+  <%= form.label :Menu %>
+   <%= form.file_field :Menu %>
+   </div>
+
+
+    <%= form.hidden_field :user_id%>
+
 
   <div class="actions">
     <%= form.submit %>

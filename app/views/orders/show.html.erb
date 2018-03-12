@@ -2,7 +2,11 @@
 
 <p>
   <strong>Type:</strong>
-  <%= @order.type %>
+  <% if @order.orderType == 0 %>
+  breakfast
+  <%else %>
+  lunch
+  <%end %>
 </p>
 
 <p>
@@ -12,7 +16,11 @@
 
 <p>
   <strong>User:</strong>
-  <%= @order.user %>
+  <%= @order.user.name %>
+</p>
+
+<p>
+<%= image_tag @order.Menu.url ( :medium ) %>
 </p>
 
 <%= link_to 'Edit', edit_order_path(@order) %> |

@@ -15,7 +15,7 @@
   <tbody>
     <% @orders.each do |order| %>
       <tr>
-        <td><%= order.type %></td>
+        <td><%= order.orderType  %></td>
         <td><%= order.place %></td>
         <td><%= order.user %></td>
         <td><%= link_to 'Show', order %></td>

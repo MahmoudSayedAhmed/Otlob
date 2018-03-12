@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180311051637) do
+ActiveRecord::Schema.define(version: 20180312092826) do
 
   create_table "friendships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "user_id"
@@ -64,11 +64,15 @@ ActiveRecord::Schema.define(version: 20180311051637) do
   end
 
   create_table "orders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.boolean "type"
+    t.boolean "orderType"
     t.string "place"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "Menu_file_name"
+    t.string "Menu_content_type"
+    t.integer "Menu_file_size"
+    t.datetime "Menu_updated_at"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
