@@ -1,14 +1,16 @@
-<h1>add friend</h1>
-
+<h1>Friends</h1>
 <div>
-<span>"enter your friend email" </span>
-<<<<<<< HEAD
-<input  class="field" type="email" id="addfriend">
-<button  type="button" onclick="addFriend()">add</button>
-=======
-<input  class="field " type="email" id="addfriend">
-<button  class="field" type="button" onclick="addFriend()">add</button>
->>>>>>> 1e84fd85768d04905d7019ed2618ca634cb1acdc
+	<span>"Enter your friend email" </span>
+	<input  class="field " type="email" id="addfriend">
+	<button  class="field" type="button" onclick="addFriend()">Add</button>
 <div>
-<div  id="friendList">
+<h3>Friends List</h3>
+<div id="friendsList">
+	<% @friends.each do |friend|%>
+		<div>
+			<%= image_tag User.find(friend.friend_id).uimage (:thumb)  %>
+	        <p><%= User.find(friend.friend_id).name %></p>
+	        <p id="<%=friend.friend_id%>" onclick="removeFriend(this)" class="removeLink">unfriend</p>
+	    </div>
+    <% end %>
 </div>
