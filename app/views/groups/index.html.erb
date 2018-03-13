@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<%= hidden_field_tag 'user_id', current_user.id %>
 <h1>Groups</h1>
 <h3>Adding group</h3>
 <p>name</p>
@@ -20,42 +20,23 @@
         <% if group.user_id == current_user.id%>
           <tr>
             <td><%= group.name %></td>
-            <td><%= link_to 'Edit', edit_group_path(group) %></td>
-            <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><i class="fa fa-user-plus" style="font-size:36px;color:blue" onclick="editGroup(this)"></i></td>
+            <td><i id="<%= group.id %>" class="fa fa-remove" style="font-size:36px;color:red" onclick="deleteGroup(this)"></i></td>
           </tr>
         <% end %>
       <% end %>
     </tbody>
   </table>
   </br>
-  <h3><%= @userGroups.first.name %></h3>
-  <p>your friend name</p>
-  <input id="friend">
-  <button onclick="addFriendToGroup()">add</button>
-  <div id="friendList">
-    <% @userGroups.first.friendships.each do |fs| %>
-      <p><%= User.find(fs.friend_id).name %></p>
-    <% end %>
+  <div id="edittingGroup" gid="<%= @userGroups.first.id %>">
+    <h3 id="gname"><%= @userGroups.first.name %></h3>
+    <p>your friend name</p>
+    <input id="friend">
+    <button onclick="addFriendToGroup()">add</button>
+    <div id="friendList">
+      <% @userGroups.first.friendships.each do |fs| %>
+        <p><%= User.find(fs.friend_id).name %></p>
+      <% end %>
+    </div>
   </div>
 <% end %>
-<script type="text/javascript">
-  function addGroup(){
-    gname = $("#group").val()
-      $.ajax({ 
-          method: 'post',
-          url: '/groups', 
-          data: {name:gname, user_id:'<%=current_user.id%>', authenticity_token:$('meta[name="csrf-token"]').attr("content")},
-          success: function(result){$("#groupsList").append('<tr><td>'+result["str"]+'</td><td>dfgszd</td><td>sd</td></tr>')}
-      })
-  }
-  function addFriendToGroup(){
-    fname = $("#friend").val()
-      $.ajax({ 
-          method: 'post',
-          url: '/friendships_groups', 
-          data: {friendName:fname, group_id:'<%=@userGroups.first.id%>', authenticity_token:$('meta[name="csrf-token"]').attr("content")},
-          dataType: "json",
-          success: function(result){$("#friendList").append('<p>'+result["str"]+'</p>')}
-      })
-  }
-</script>

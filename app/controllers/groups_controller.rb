@@ -11,6 +11,12 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
+    friends = []
+    @group.friendships.each do |friendship|
+      friends.push(User.find(friendship.friend_id).name)
+    end
+    puts friends
+    render json: {"list": friends}
   end
 
   # GET /groups/new
@@ -28,7 +34,7 @@ class GroupsController < ApplicationController
     @group = Group.new(:name => params[:name], :user_id => params[:user_id])
     respond_to do |format|
       if @group.save
-        format.json { render json: {"str": @group.name} }
+        format.json { render json: {"str": @group.name, "id": @group.id} }
       end
     end
   end
@@ -51,10 +57,6 @@ class GroupsController < ApplicationController
   # DELETE /groups/1.json
   def destroy
     @group.destroy
-    respond_to do |format|
-      format.html { redirect_to groups_url, notice: 'Group was successfully destroyed.' }
-      format.json { head :no_content }
-    end
   end
 
   private
