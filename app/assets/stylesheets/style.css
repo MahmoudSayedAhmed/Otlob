@@ -32,4 +32,12 @@ input{
 	color: black;
 }
 
-i {cursor: pointer}
+i{
+	cursor: pointer
+}
+
+.removeLink{
+	cursor: pointer;
+	text-decoration: underline;
+	color: red;
+}

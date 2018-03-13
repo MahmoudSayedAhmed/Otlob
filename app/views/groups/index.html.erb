@@ -1,42 +1,47 @@
 <p id="notice"><%= notice %></p>
-<%= hidden_field_tag 'user_id', current_user.id %>
-<h1>Groups</h1>
+<h1 id="userGroups" UID="<%= current_user.id %>">Groups</h1>
 <h3>Adding group</h3>
 <p>name</p>
 <input id="group">
 <button onclick="addGroup()">add</button>
-<% if @userGroups.size != 0 %>
-  <h3>My Groups</h3>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
+<div id="groupContainer">
+  <% if @userGroups.size != 0 %>
+    <h3>My Groups</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
 
-    <tbody id="groupsList">
-      <% @userGroups.each do |group| %>
-        <% if group.user_id == current_user.id%>
-          <tr>
-            <td><%= group.name %></td>
-            <td><i class="fa fa-user-plus" style="font-size:36px;color:blue" onclick="editGroup(this)"></i></td>
-            <td><i id="<%= group.id %>" class="fa fa-remove" style="font-size:36px;color:red" onclick="deleteGroup(this)"></i></td>
-          </tr>
+      <tbody id="groupsList">
+        <% @userGroups.each do |group| %>
+          <% if group.user_id == current_user.id%>
+            <tr>
+              <td><%= group.name %></td>
+              <td><i class="fa fa-user-plus" style="font-size:36px;color:blue" onclick="editGroup(this)"></i></td>
+              <td><i id="<%= group.id %>" class="fa fa-remove" style="font-size:36px;color:red" onclick="deleteGroup(this)"></i></td>
+            </tr>
+          <% end %>
         <% end %>
-      <% end %>
-    </tbody>
-  </table>
-  </br>
-  <div id="edittingGroup" gid="<%= @userGroups.first.id %>">
-    <h3><%= @userGroups.first.name %></h3>
-    <p>your friend name</p>
-    <input class="field" id="friend">
-    <button class="actions" onclick="addFriendToGroup()">add</button>
-    <div id="friendList">
-      <% @userGroups.first.friendships.each do |fs| %>
-        <p><%= User.find(fs.friend_id).name %></p>
-      <% end %>
+      </tbody>
+    </table>
+    </br>
+    <div id="edittingGroup" gid="<%= @userGroups.first.id %>">
+      <h3 id="gname"><%= @userGroups.first.name %></h3>
+      <p>your friend name</p>
+      <input class="field" id="friend">
+      <button class="actions" onclick="addFriendToGroup()">add</button>
+      <div id="friendList">
+        <% @userGroups.first.friendships.each do |fs| %>
+          <div>
+            <%= image_tag User.find(fs.friend_id).uimage (:thumb)  %>
+            <p><%= User.find(fs.friend_id).name %></p>
+            <p id="<%=fs.friend_id%>" onclick="removeFriendFromGroup(this)" class="removeLink">remove</p>
+          </div>
+        <% end %>
+      </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>

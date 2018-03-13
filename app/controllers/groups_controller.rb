@@ -11,12 +11,15 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
-    friends = []
+    @friends = []
+    @ids = []
+    @Imgs = []
     @group.friendships.each do |friendship|
-      friends.push(User.find(friendship.friend_id).name)
+      @friends.push(User.find(friendship.friend_id).name)
+      @ids.push(friendship.friend_id)
+      @Imgs.push(User.find(friendship.friend_id).uimage (:thumb))
     end
-    puts friends
-    render json: {"list": friends}
+    render json: {"list": @friends, "fids": @ids, "ImgList": @Imgs}
   end
 
   # GET /groups/new
