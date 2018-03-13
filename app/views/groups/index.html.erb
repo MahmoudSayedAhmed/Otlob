@@ -38,36 +38,5 @@
     <p><%= User.find(fs.friend_id).name %></p>
   <% end %>
 </div>
-
-
-
-
-<script type="text/javascript">
-    function addFriendToGroup(){
-      fname = $("#friend").val()
-        $.ajax({ 
-            method: 'post',
-            url: '/friendships_groups', 
-            data: {friendName:fname, group_id:'<%=@userGroups.first.id%>'},
-            success: function(result){$("#friendList").append('<p>'+result["str"]+'</p>')}
-        })
-    }
-</script>
-
-
-
-    </tbody>
-  </table>
-  </br>
-  <div id="edittingGroup" gid="<%= @userGroups.first.id %>">
-    <h3 id="gname"><%= @userGroups.first.name %></h3>
-    <p>your friend name</p>
-    <input id="friend">
-    <button onclick="addFriendToGroup()">add</button>
-    <div id="friendList">
-      <% @userGroups.first.friendships.each do |fs| %>
-        <p><%= User.find(fs.friend_id).name %></p>
-      <% end %>
-    </div>
-  </div>
+</div>
 <% end %>

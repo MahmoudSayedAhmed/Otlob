@@ -11,27 +11,27 @@
 
   <body class="body" >
 
-     <nav class="navbar navbar-light bg-light font" id="topNav">
+     <nav class="navbar navbar-dark bg-dark" id="topNav">
 
       <div class="container">
  
         <div id="navbarResponsive">
-      <ul class="nav navbar-nav navbar-left" style="padding: 18px;">
+      <ul class="nav navbar-nav navbar-left" style="padding: 20px;">
             <li>
               <%= image_tag("otlop.png", class: "img-responsive image", id: "navbar-logo") %>
 
             </li>
             <li class="nav-item active">
-              <%= link_to 'Home |' , home_index_url , :class => "nav-link font" %>
+              <%= link_to 'Home |' , home_index_url , :class => "nav-link navfont" %>
             </li>
             <li class="nav-item">
-              <%= link_to 'Friends |' , friendships_url , :class => "nav-link" %>
+              <%= link_to 'Friends |' , friendships_url , :class => "nav-link navfont" %>
             </li>
             <li class="nav-item">
-              <%= link_to 'Groups |' , groups_url , :class => "nav-link" %>
+              <%= link_to 'Groups |' , groups_url , :class => "nav-link navfont" %>
             </li>
             <li class="nav-item">
-              <%= link_to 'Orders |' , new_order_url , :class => "nav-link" %>
+              <%= link_to 'Orders |' , new_order_url , :class => "nav-link navfont" %>
             </li>
           </ul>
         </div>

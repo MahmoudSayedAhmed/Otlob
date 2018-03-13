@@ -5,9 +5,11 @@ background-size: 1400px 600px;
 
 color: white;
 }
-
+.navfont{
+	color: white !important;
+}
 .font{
-	color: black !important;
+	color: black ;
 }
 .field input{
 	color: black;
