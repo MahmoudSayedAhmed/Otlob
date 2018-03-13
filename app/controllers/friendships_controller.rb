@@ -12,6 +12,23 @@ class FriendshipsController < ApplicationController
   def show
   end
 
+
+  def addFriend
+    @he=User.find_by email:  params[:email]
+    if @he
+       @friendship = Friendship.create(:user_id => current_user.id, :friend_id => @he.id)
+       render :json => {
+                       :code => 1,
+                       :user => @he
+                      }
+
+    else
+    render :json => {
+                    :code => 2
+                   }
+      end
+  end
+
   # GET /friendships/new
   def new
     @friendship = Friendship.new

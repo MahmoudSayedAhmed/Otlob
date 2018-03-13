@@ -6,8 +6,6 @@ function inviteFriend(){
         url: '/set_friends',
         data: {name:fName, authenticity_token:$('meta[name="csrf-token"]').attr("content")},
         success: function(result){
-  
-
 
 
           if (result.code == 0)
@@ -21,5 +19,6 @@ function inviteFriend(){
 
 
         }
+
     })
 }
