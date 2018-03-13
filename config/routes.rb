@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   get 'home/index'
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
+  post '/set_friends' => 'orders#setfriends'
+  post '/addfriends' =>'friendships#addFriend'
+
+
   authenticated :user do
    root 'home#index', as: 'authenticated_root'
   end

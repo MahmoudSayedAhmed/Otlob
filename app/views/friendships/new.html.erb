@@ -1,5 +1,9 @@
-<h1>New Friendship</h1>
+<h1>add friend</h1>
 
-<%= render 'form', friendship: @friendship %>
-
-<%= link_to 'Back', friendships_path %>
+<div>
+<span>"enter your friend email" </span>
+<input  class="field " type="email" id="addfriend">
+<button  type="button" onclick="addFriend()">add</button>
+<div>
+<div  id="friendList">
+</div>

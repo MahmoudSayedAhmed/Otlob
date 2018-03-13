@@ -27,11 +27,29 @@
    <%= form.file_field :Menu %>
    </div>
 
-
     <%= form.hidden_field :user_id%>
+
+
 
 
   <div class="actions">
     <%= form.submit %>
   </div>
+
+  <div class="field">
+  <%= form.label :Friend %>
+  <%= form.text_field :Friend ,id: 'friend' %>
+  <button  type="button" onclick="inviteFriend()">add</button>
+  </div>
+
+
+  <div id="invited Friend">
+
+  </div>
+
+
 <% end %>
+
+
+
+  <%=csrf_meta_tag%>
