@@ -1,1 +1,61 @@
-<h1>Home#index</h1>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="panel panel-primary">
+			    <div class="panel-heading">
+			        Latest Orders
+			    </div>
+			    <div class="panel-body">
+			        <div class="row">
+			            <div class="col-lg-12">
+			            <% @orders.each do |order| %>
+							<b>
+							<%= link_to   order_url(order) do %>
+					<%if order.orderType%>
+							<%= "lunch" %> on <%= order.created_at.strftime('%d/%m/%Y') %> </b>
+					<%else%>
+							<%= "breakfast"%> on <%= order.created_at.strftime('%d/%m/%Y') %> </b>
+					<%end%>
+							<% end %>
+							<br>
+						<% end %>  
+			            </div>
+			        </div>
+			    </div>
+			</div>
+		</div>
+
+
+		<div class="col-sm-6">
+			<div class="panel panel-primary">
+			    <div class="panel-heading">
+			        Friend's activties
+			    </div>
+			    <div class="panel-body">
+			        <div class="row">
+			            <div class="col-lg-12">
+					        <% @all.each do |gorder| %>
+								<% gorder.each do |order|%>
+								<b>
+								<%= order.user.username %> has created an order for <%= order.orderType %> from <%= order.place %> 
+								<% end %> </b>
+
+								<br>
+							<% end %>  
+			            </div>
+			        </div>
+			    </div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
