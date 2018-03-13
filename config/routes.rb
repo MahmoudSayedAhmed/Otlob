@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+   get 'events/index'
+    mount ActionCable.server => '/cable'
+
   resources :groups
   resources :items
   resources :joineds

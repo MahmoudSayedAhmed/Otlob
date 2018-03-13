@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20180312190955) do
+=======
+<<<<<<< HEAD
+ActiveRecord::Schema.define(version: 20180313095828) do
+
+  create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+=======
+ActiveRecord::Schema.define(version: 20180312092826) do
+>>>>>>> 1e84fd85768d04905d7019ed2618ca634cb1acdc
+>>>>>>> f2807b993f61819013145cbf9f58e1ad11e326a8
 
   create_table "friendships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "user_id"
