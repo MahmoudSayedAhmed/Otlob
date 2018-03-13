@@ -25,18 +25,19 @@
           </tr>
         <% end %>
       <% end %>
-    <% end %>
-  </tbody>
-</table>
-</br>
-<h3><%= @userGroups.first.name %></h3>
-<p>your friend name</p>
-<input class="field" id="friend">
-<button class="actions" onclick="addFriendToGroup()">add</button>
-<div id="friendList">
-  <% @userGroups.first.friendships.each do |fs| %>
-    <p><%= User.find(fs.friend_id).name %></p>
-  <% end %>
-</div>
-</div>
+    </tbody>
+  </table>
+  </br>
+  <div id="edittingGroup" gid="<%= @userGroups.first.id %>">
+    <h3><%= @userGroups.first.name %></h3>
+    <p>your friend name</p>
+    <input class="field" id="friend">
+    <button class="actions" onclick="addFriendToGroup()">add</button>
+    <div id="friendList">
+      <% @userGroups.first.friendships.each do |fs| %>
+        <p><%= User.find(fs.friend_id).name %></p>
+      <% end %>
+    </div>
+  </div>
 <% end %>
+
