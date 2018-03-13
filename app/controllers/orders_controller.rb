@@ -7,6 +7,35 @@ class OrdersController < ApplicationController
     @orders = Order.all
   end
 
+  def setfriends
+    @invitedFriend=Array.new
+    @he=User.find_by name:  params[:name]
+    if @he
+
+    @fri=Friendship.find_by_user_id_and_friend_id(current_user.id,@he.id)
+
+      if @fri
+          @invitedFriend.push(@he.id)
+          render :json => {
+                         :code => 0,
+                         :result => @he
+                     }
+        #send user data
+     else
+      #not a friend code 1
+      render :json => {
+                      :code => 1
+                     }
+        end
+    else
+
+    #send not a user in system
+    render :json => {
+                    :code => 2
+                   }
+      end
+  end
+
   # GET /orders/1
   # GET /orders/1.json
   def show
@@ -26,6 +55,11 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.user_id=current_user.id
+    if @invitedFriend
+    @invitedFriend.each { |friend|
+    Inviteds.create(:order_id => @order.id , :user_id => friend)
+    }
+   end
     respond_to do |format|
       if @order.save
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
@@ -71,4 +105,13 @@ class OrdersController < ApplicationController
     def order_params
       params.require(:order).permit(:orderType, :place, :user_id ,:Menu )
     end
+
+
+
+
+
+
+
+
+
 end
