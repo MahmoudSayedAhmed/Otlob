@@ -34,8 +34,8 @@
 			    <div class="panel-body">
 			        <div class="row">
 			            <div class="col-lg-12">
-					        <% @all.each do |gorder| %>
-								<% gorder.each do |order|%>
+					        <% @all.each do |order| %>
+								<% order.each do |order|%>
 								<b>
 								<%= order.user.username %> has created an order for <%= order.orderType %> from <%= order.place %> 
 								<% end %> </b>
