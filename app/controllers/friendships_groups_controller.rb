@@ -1,5 +1,4 @@
 class FriendshipsGroupsController < ApplicationController
-	skip_before_action :verify_authenticity_token
 	def create
 		@group = Group.find(params[:group_id])
 		@friend = User.find_by name: params[:friendName]
@@ -9,7 +8,6 @@ class FriendshipsGroupsController < ApplicationController
 		respond_to do |format|
 			if @join.save
     			format.json { render json: {"str": @data} }
-      			format.js { render "file"}
       		end
   		end
 	end

@@ -5,8 +5,8 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'jquery-3.1.1', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <%= javascript_include_tag 'application'%>
   </head>
 
   <body class="body" >
@@ -48,5 +48,6 @@
       <li><%= link_to 'Login', new_user_session_path  %>  </li>
     <% end %>
     <%= yield %>
+    <%= javascript_include_tag 'JSGroups'%>
   </body>
 </html>

@@ -1,25 +1,29 @@
 <p id="notice"><%= notice %></p>
-
+<%= hidden_field_tag 'user_id', current_user.id %>
 <h1>Groups</h1>
 <h3>Adding group</h3>
-<%= render 'form', group: Group.new %>
-<h3>My Groups</h3>
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<p>name</p>
+<input id="group">
+<button onclick="addGroup()">add</button>
+<% if @userGroups.size != 0 %>
+  <h3>My Groups</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
 
-  <tbody>
-    <% @userGroups.each do |group| %>
-      <% if group.user_id == current_user.id%>
-        <tr>
-          <td><%= group.name %></td>
-          <td><%= link_to 'Edit', edit_group_path(group) %></td>
-          <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
+    <tbody id="groupsList">
+      <% @userGroups.each do |group| %>
+        <% if group.user_id == current_user.id%>
+          <tr>
+            <td><%= group.name %></td>
+            <td><i class="fa fa-user-plus" style="font-size:36px;color:blue" onclick="editGroup(this)"></i></td>
+            <td><i id="<%= group.id %>" class="fa fa-remove" style="font-size:36px;color:red" onclick="deleteGroup(this)"></i></td>
+          </tr>
+        <% end %>
       <% end %>
     <% end %>
   </tbody>
@@ -52,3 +56,18 @@
 
 
 
+    </tbody>
+  </table>
+  </br>
+  <div id="edittingGroup" gid="<%= @userGroups.first.id %>">
+    <h3 id="gname"><%= @userGroups.first.name %></h3>
+    <p>your friend name</p>
+    <input id="friend">
+    <button onclick="addFriendToGroup()">add</button>
+    <div id="friendList">
+      <% @userGroups.first.friendships.each do |fs| %>
+        <p><%= User.find(fs.friend_id).name %></p>
+      <% end %>
+    </div>
+  </div>
+<% end %>

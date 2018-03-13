@@ -11,6 +11,12 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
+    friends = []
+    @group.friendships.each do |friendship|
+      friends.push(User.find(friendship.friend_id).name)
+    end
+    puts friends
+    render json: {"list": friends}
   end
 
   # GET /groups/new
@@ -25,16 +31,10 @@ class GroupsController < ApplicationController
   # POST /groups
   # POST /groups.json
   def create
-    @group = Group.new(group_params)
-
+    @group = Group.new(:name => params[:name], :user_id => params[:user_id])
     respond_to do |format|
-      @group.user_id = current_user.id
       if @group.save
-        format.html { redirect_to groups_path, notice: 'Group was successfully created.' }
-        format.json { render :show, status: :created, location: @group }
-      else
-        format.html { render :new }
-        format.json { render json: @group.errors, status: :unprocessable_entity }
+        format.json { render json: {"str": @group.name, "id": @group.id} }
       end
     end
   end
@@ -57,20 +57,11 @@ class GroupsController < ApplicationController
   # DELETE /groups/1.json
   def destroy
     @group.destroy
-    respond_to do |format|
-      format.html { redirect_to groups_url, notice: 'Group was successfully destroyed.' }
-      format.json { head :no_content }
-    end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_group
       @group = Group.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def group_params
-      params.require(:group).permit(:name, :user_id)
     end
 end
