@@ -10,7 +10,8 @@
   </head>
 
   <body class="body" >
-     <nav class="navbar navbar-dark bg-dark" id="topNav">
+
+     <nav class="navbar navbar-light bg-light font" id="topNav">
 
       <div class="container">
  
@@ -21,23 +22,22 @@
 
             </li>
             <li class="nav-item active">
-              <%= link_to 'Home ' , home_index_url , :class => "nav-link" %>
+              <%= link_to 'Home |' , home_index_url , :class => "nav-link font" %>
             </li>
             <li class="nav-item">
-              <%= link_to 'Friends ' , friendships_url , :class => "nav-link" %>
+              <%= link_to 'Friends |' , friendships_url , :class => "nav-link" %>
             </li>
             <li class="nav-item">
-              <%= link_to 'Groups ' , groups_url , :class => "nav-link" %>
+              <%= link_to 'Groups |' , groups_url , :class => "nav-link" %>
             </li>
             <li class="nav-item">
-              <%= link_to 'Orders ' , new_order_url , :class => "nav-link" %>
+              <%= link_to 'Orders |' , new_order_url , :class => "nav-link" %>
             </li>
           </ul>
         </div>
       </div>
     </nav>
 
-    <h1 class="font"></h1>
 
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
