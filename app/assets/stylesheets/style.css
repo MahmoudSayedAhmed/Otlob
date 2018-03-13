@@ -2,6 +2,7 @@
 background:linear-gradient(to bottom,rgba(0,0,0,0.6) 0%, rgba(255,255,255,0.2) 100%), url("back.jpg");
 background-repeat:no-repeat;
 background-size: 1400px 600px;
+
 color: white;
 }
 
@@ -9,6 +10,12 @@ color: white;
 	color: black !important;
 }
 .field input{
+	color: black;
+}
+button{
+	color: black;
+}
+input{
 	color: black;
 }
 .actions{
@@ -21,7 +28,7 @@ color: white;
 	padding-left: 20px;
 	cursor: pointer
 }
-h1{
+ 	 	h1{
 	color: black;
 }
 
