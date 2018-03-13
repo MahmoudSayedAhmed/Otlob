@@ -13,7 +13,7 @@ class Order < ApplicationRecord
 private
 
 def create_event
-  Event.create message: "A new order for you has been created"
+  Event.create message: self
 end
 
 
