@@ -2,7 +2,19 @@
 background-image: url("joker.jpg");
 background-repeat:no-repeat;
 background-size: 1500px 800px;
+color: white;
 }
 .font{
-	color: white;
+	color: black;
+}
+.field input{
+	color: black;
+}
+.actions{
+	color: black;
+}
+.image{
+	width: 100px;
+	height: 50px;
+	padding-left: 20px;
 }

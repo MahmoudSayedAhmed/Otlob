@@ -27,8 +27,8 @@
 </br>
 <h3><%= @userGroups.first.name %></h3>
 <p>your friend name</p>
-<input id="friend">
-<button onclick="addFriendToGroup()">add</button>
+<input class="field" id="friend">
+<button class="actions" onclick="addFriendToGroup()">add</button>
 <div id="friendList">
   <% @userGroups.first.friendships.each do |fs| %>
     <p><%= User.find(fs.friend_id).name %></p>
