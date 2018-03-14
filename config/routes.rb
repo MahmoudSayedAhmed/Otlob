@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'welcome/index'
+
   resources :groups
   resources :items
   resources :joineds
@@ -16,10 +18,10 @@ Rails.application.routes.draw do
   authenticated :user do
    root 'home#index', as: 'authenticated_root'
   end
- devise_scope :user do
-   root 'devise/sessions#new'
-  end
+ # devise_scope :user do
+ #   root 'devise/sessions#new'
+ #  end
   resources :users
-  root to: "home#index"
+  root to: "welcome#index"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -3,51 +3,63 @@
   <head>
     <title>Otlob</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'animate', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'style', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'bootstrap', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <%= javascript_include_tag 'application'%>
   </head>
 
-  <body class="body" >
+  <body>
 
-     <nav class="navbar navbar-dark bg-dark" id="topNav">
+  <div class="gtco-loader"></div>
+  
 
-      <div class="container">
+  
+  <div class="page-inner">
+
+  <nav class="gtco-nav" role="navigation">
+
+    <div class="gtco-container">
  
-        <div id="navbarResponsive">
-      <ul class="nav navbar-nav navbar-left" style="padding: 20px;">
-            <li>
-              <%= image_tag("otlop.png", class: "img-responsive image", id: "navbar-logo") %>
+      <div class="row">
+        <div class="col-sm-4 col-xs-12">
+          <div id="gtco-logo"> 
+            <%= image_tag("otlop.png", class: "img-responsive image", id: "navbar-logo") %>
+          </div>
+        </div>
+              <div class="col-xs-8 text-right menu-1">
+          <ul>
 
-            </li>
             <li class="nav-item active">
-              <%= link_to 'Home |' , home_index_url , :class => "nav-link navfont" %>
+              <%= link_to 'Home |' , home_index_url , :class => "btn-cta" %>
             </li>
             <li class="nav-item">
-              <%= link_to 'Friends |' , friendships_url , :class => "nav-link navfont" %>
+              <%= link_to 'Friends |' , friendships_url , :class => "btn-cta" %>
             </li>
             <li class="nav-item">
-              <%= link_to 'Groups |' , groups_url , :class => "nav-link navfont" %>
+              <%= link_to 'Groups |' , groups_url , :class => "btn-cta" %>
             </li>
             <li class="nav-item">
-              <%= link_to 'Orders |' , new_order_url , :class => "nav-link navfont" %>
+              <%= link_to 'Orders |' , new_order_url , :class => "btn-cta" %>
             </li>
           </ul>
         </div>
       </div>
+      </div>
     </nav>
 
-
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <% if user_signed_in? %>
-      <li><%= link_to 'Logout', destroy_user_session_path, method: :delete  %></li>
-    <% else %>
-    <p>You are not signed in</p>
-      <li><%= link_to 'Login', new_user_session_path  %>  </li>
-    <% end %>
+  
+   
     <%= yield %>
     <%= javascript_include_tag 'JSGroups'%>
+    <%= javascript_include_tag 'jquery.min'%>
+    <%= javascript_include_tag 'jquery.waypoints.min'%>
+    <%= javascript_include_tag 'main'%>
+    <%= javascript_include_tag 'owl.carousel.min'%>
+
   </body>
 </html>

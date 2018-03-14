@@ -1,7 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Orders</h1>
-
 <table>
   <thead>
     <tr>
@@ -14,18 +13,26 @@
 
   <tbody>
     <% @orders.each do |order| %>
-      <tr>
-        <td><%= order.orderType  %></td>
-        <td><%= order.place %></td>
-        <td><%= order.user %></td>
-        <td><%= link_to 'Show', order %></td>
-        <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <% if order == nil %>
+        <p>you have no orders</p>
+          <% else %>
+            <tr>
+              <% if order.orderType == false  %>
+                <td> BreakFast  </td>
+              <% else %>
+                <td> Lunch </td>
+              <% end %>
+              <td><%= order.place %></td>
+              <td><%= order.user.name %></td>
+              <td><%= link_to 'Show', order %></td>
+              <td><%= link_to 'Finish', edit_order_path(order) %></td>
+              <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              
+            </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
-
 <br>
 
 <%= link_to 'New Order', new_order_path %>
