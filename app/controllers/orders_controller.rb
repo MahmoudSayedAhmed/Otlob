@@ -13,8 +13,8 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:gid])
     @order.status = 1
     @order.save
-    puts "dgsdfsdfgsdf"
   end
+
 
   def setfriends
     @invitedFriend=Array.new
@@ -99,10 +99,6 @@ class OrdersController < ApplicationController
   # DELETE /orders/1.json
   def destroy
     @order.destroy
-    respond_to do |format|
-      format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }
-      format.json { head :no_content }
-    end
   end
 
   private

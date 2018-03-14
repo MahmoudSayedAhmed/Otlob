@@ -28,9 +28,22 @@ function finish(e){
       url : '/orders/finish',
       data: {authenticity_token:$('meta[name="csrf-token"]').attr("content"), gid: $(e).attr('id')},
       success: function(result){
+        $(e).parent().prev().text('Finished')
         $(e).next().remove()
         $(e).remove()
       }
   })
 
 }
+
+function destroy(e){
+$.ajax({
+    method: "delete",
+    url: '/orders/'+$(e).prev().attr('id'),
+    data: {authenticity_token:$('meta[name="csrf-token"]').attr("content")},
+    success: function(result){
+        $(e).closest('tr').remove()
+    }
+  });
+}
+
