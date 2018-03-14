@@ -1,3 +1,3 @@
 class FriendshipsGroup < ApplicationRecord
-	self.primary_keys = :friendship_id,:group_id
+	self.primary_keys = :Friendship_id, :group_id
 end

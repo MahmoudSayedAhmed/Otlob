@@ -34,7 +34,13 @@
         </div>
               <div class="col-xs-8 text-right menu-1">
           <ul>
-
+              
+             <% if user_signed_in? %>
+                <li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
+              <% else %>
+                <li><%= link_to('Login', new_user_session_path)  %>  </li>
+              <% end %>
+             
             <li class="nav-item active">
               <%= link_to 'Home |' , home_index_url , :class => "btn-cta" %>
             </li>
@@ -54,8 +60,6 @@
       </div>
     </nav>
 
-  
-   
     <%= yield %>
     <%= javascript_include_tag 'JSGroups'%>
     <%= javascript_include_tag 'jquery.min'%>
