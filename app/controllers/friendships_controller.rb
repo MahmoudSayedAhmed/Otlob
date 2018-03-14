@@ -15,11 +15,14 @@ class FriendshipsController < ApplicationController
 
   def addFriend
     @he=User.find_by email:  params[:email]
+    @image = @he.uimage (:thumb)
+    puts @img
     if @he
        @friendship = Friendship.create(:user_id => current_user.id, :friend_id => @he.id)
        render :json => {
                        :code => 1,
-                       :user => @he
+                       :user => @he,
+                       :img => @image
                       }
 
     else
@@ -29,9 +32,16 @@ class FriendshipsController < ApplicationController
       end
   end
 
+
+  def unfriend
+    @friendship = Friendship.where("user_id = ? AND friend_id = ?", current_user.id, params[:fid]).first
+    @friendship.destroy
+  end
+
+
   # GET /friendships/new
   def new
-    @friendship = Friendship.new
+    @friends = current_user.friendships
   end
 
   # GET /friendships/1/edit

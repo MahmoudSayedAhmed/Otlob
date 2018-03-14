@@ -8,7 +8,7 @@ end
 
 gem 'bootstrap-sass', '~> 3.3.7'
 gem 'jquery-rails'
-
+gem 'composite_primary_keys', '~> 10.0', '>= 10.0.3'
 gem 'paperclip',' ~>4.2'
 gem 'omniauth-facebook'
 gem 'figaro'

@@ -9,7 +9,8 @@ function inviteFriend(){
 
 
           if (result.code == 0)
-             {$("#invited Friend").append("<p>"+result.user.name  +" </p>")}
+             { 
+               $("#invit").append("<p>"+ result.user.name +" </p>")}
           else if (result.code == 1)
             {alert("he has to be your friend")}
           else

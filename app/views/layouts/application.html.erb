@@ -10,6 +10,7 @@
 
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <%= stylesheet_link_tag    'style', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application'%>
   </head>
 
@@ -38,7 +39,8 @@
               <%= link_to 'Home |' , home_index_url , :class => "btn-cta" %>
             </li>
             <li class="nav-item">
-              <%= link_to 'Friends |' , friendships_url , :class => "btn-cta" %>
+
+              <%= link_to 'Friends |' , new_friendship_url , :class => "nav-link" %>
             </li>
             <li class="nav-item">
               <%= link_to 'Groups |' , groups_url , :class => "btn-cta" %>

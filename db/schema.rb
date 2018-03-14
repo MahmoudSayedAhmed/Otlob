@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180312092826) do
+ActiveRecord::Schema.define(version: 20180314084109) do
+
+  create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "friendships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "user_id"
@@ -19,9 +25,9 @@ ActiveRecord::Schema.define(version: 20180312092826) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "friendships_groups", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "friendship_id"
-    t.bigint "group_id"
+  create_table "friendships_groups", primary_key: ["friendship_id", "group_id"], force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "friendship_id", default: 0, null: false
+    t.bigint "group_id", default: 0, null: false
     t.index ["friendship_id"], name: "index_friendships_groups_on_friendship_id"
     t.index ["group_id"], name: "index_friendships_groups_on_group_id"
   end
@@ -73,6 +79,7 @@ ActiveRecord::Schema.define(version: 20180312092826) do
     t.string "Menu_content_type"
     t.integer "Menu_file_size"
     t.datetime "Menu_updated_at"
+    t.boolean "status"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
@@ -90,10 +97,10 @@ ActiveRecord::Schema.define(version: 20180312092826) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
-    t.string "image_file_name"
-    t.string "image_content_type"
-    t.integer "image_file_size"
-    t.datetime "image_updated_at"
+    t.string "uimage_file_name"
+    t.string "uimage_content_type"
+    t.integer "uimage_file_size"
+    t.datetime "uimage_updated_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

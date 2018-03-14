@@ -11,5 +11,6 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
-Rails.application.config.assets.precompile += %w( style.css jquery.js JSGroups.js owl.carousel.min.js main.js jquery.waypoints.min.js jquery.min.js animate.css bootstrap.css style.css )
+Rails.application.config.assets.precompile += %w( style.css jquery.js JSGroups.js owl.carousel.min.js main.js jquery.waypoints.min.js jquery.min.js animate.css style.css )
+Rails.application.config.assets.precompile += %w(  bootstrab.css font-awesome)
 

@@ -1,7 +1,7 @@
 body{
 background:linear-gradient(to bottom,rgba(0,0,0,0.6) 0%, rgba(255,255,255,0.2) 100%), url("back.jpg");
 background-repeat:no-repeat;
-background-size: 1400px 600px;
+background-size: cover;
 
 color: white;
 }
@@ -1876,4 +1876,12 @@ form label {
   .fh5co-faq-list li h2 {
     font-size: 26px;
   }
+i{
+	cursor: pointer
+}
+
+.removeLink{
+	cursor: pointer;
+	text-decoration: underline;
+	color: red;
 }

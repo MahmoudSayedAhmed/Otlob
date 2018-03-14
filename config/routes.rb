@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   get 'welcome/index'
+   get 'events/index'
+    mount ActionCable.server => '/cable'
 
   resources :groups
   resources :items
@@ -9,10 +11,12 @@ Rails.application.routes.draw do
   resources :orders
   resources :friendships_groups
   get 'home/index'
+  get 'latestorders/', to:'orders#latestorders'
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   post '/set_friends' => 'orders#setfriends'
   post '/addfriends' =>'friendships#addFriend'
+  post '/unfriend' =>'friendships#unfriend'
 
 
   authenticated :user do
