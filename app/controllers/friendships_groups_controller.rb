@@ -3,7 +3,6 @@ class FriendshipsGroupsController < ApplicationController
 		@group = Group.find(params[:group_id])
 		@friend = User.find_by name: params[:friendName]
 		@friendship = Friendship.where("user_id = ? AND friend_id = ?", current_user.id, @friend.id).first
-		puts @friendship
 		@join = FriendshipsGroup.new(:friendship_id => @friendship.id, :group_id => params[:group_id])
 		@data = User.find(@friendship.friend_id).name
 		@ID = User.find(@friendship.friend_id).id

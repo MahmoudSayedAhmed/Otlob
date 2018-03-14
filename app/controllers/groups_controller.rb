@@ -34,7 +34,7 @@ class GroupsController < ApplicationController
   # POST /groups
   # POST /groups.json
   def create
-    @group = Group.new(:name => params[:name], :user_id => params[:user_id])
+    @group = Group.new(:name => params[:name], :user_id => current_user.id)
     respond_to do |format|
       if @group.save
         format.json { render json: {"str": @group.name, "id": @group.id} }
