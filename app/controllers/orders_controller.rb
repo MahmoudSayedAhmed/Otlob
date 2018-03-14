@@ -14,14 +14,12 @@ class OrdersController < ApplicationController
     @invitedFriend=Array.new
     @he=User.find_by name:  params[:name]
     if @he
-
     @fri=Friendship.find_by_user_id_and_friend_id(current_user.id,@he.id)
-
       if @fri
           @invitedFriend.push(@he.id)
           render :json => {
                          :code => 0,
-                         :result => @he
+                         :user => @he
                      }
         #send user data
      else
@@ -58,6 +56,9 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.user_id=current_user.id
+    #add status waiting = 0
+    #finished =1
+    @order.status=0
     if @invitedFriend
     @invitedFriend.each { |friend|
     Inviteds.create(:order_id => @order.id , :user_id => friend)

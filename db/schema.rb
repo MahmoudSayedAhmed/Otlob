@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180313150323) do
+ActiveRecord::Schema.define(version: 20180314084109) do
 
   create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "message"
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 20180313150323) do
     t.string "Menu_content_type"
     t.integer "Menu_file_size"
     t.datetime "Menu_updated_at"
+    t.boolean "status"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
