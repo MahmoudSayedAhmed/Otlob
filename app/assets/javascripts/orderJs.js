@@ -16,10 +16,21 @@ function inviteFriend(){
           else
             {alert("not a user in system")}
 
-
-
-
         }
 
     })
+}
+
+
+function finish(e){
+  $.ajax({
+      method : 'post',
+      url : '/orders/finish',
+      data: {authenticity_token:$('meta[name="csrf-token"]').attr("content"), gid: $(e).attr('id')},
+      success: function(result){
+        $(e).next().remove()
+        $(e).remove()
+      }
+  })
+
 }

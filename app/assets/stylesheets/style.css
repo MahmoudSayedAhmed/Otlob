@@ -1,3 +1,8 @@
+
+
+
+
+
 body{
 background:linear-gradient(to bottom,rgba(0,0,0,0.6) 0%, rgba(255,255,255,0.2) 100%), url("back.jpg");
 background-repeat:no-repeat;
@@ -95,7 +100,7 @@ a {
   -o-transition: 0.5s;
   transition: 0.5s;
 }
-a:hover, a:active, a:focus {
+a:hover, a:active, a:focus,.finishLink:hover {
   color: #f54c53;
   outline: none;
   text-decoration: none;
@@ -1885,4 +1890,8 @@ i{
 	cursor: pointer;
 	text-decoration: underline;
 	color: red;
+}
+.finishLink{
+  cursor: pointer;
+  color: gray;
 }

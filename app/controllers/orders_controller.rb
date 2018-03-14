@@ -6,9 +6,15 @@ class OrdersController < ApplicationController
   # GET /orders.json
   def index
     @orders = Order.all
+    @userOrders = Order.where("user_id = ? ", current_user.id)
   end
 
-
+  def finish
+    @order = Order.find(params[:gid])
+    @order.status = 1
+    @order.save
+    puts "dgsdfsdfgsdf"
+  end
 
   def setfriends
     @invitedFriend=Array.new
