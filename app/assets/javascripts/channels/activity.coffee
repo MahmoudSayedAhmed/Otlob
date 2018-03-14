@@ -6,5 +6,4 @@ App.activity = App.cable.subscriptions.create "ActivityChannel",
     # Called when the subscription has been terminated by the server
 
   received: (event) ->
-    alert(event)
     $('#events').prepend "<div class='event'>#{event.message}</div>"
