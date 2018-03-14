@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   post '/set_friends' => 'orders#setfriends'
   post '/addfriends' =>'friendships#addFriend'
+  post '/unfriend' =>'friendships#unfriend'
 
 
   authenticated :user do

@@ -10,7 +10,7 @@
 		<div>
 			<%= image_tag User.find(friend.friend_id).uimage (:thumb)  %>
 	        <p><%= User.find(friend.friend_id).name %></p>
-	        <p id="<%=friend.friend_id%>" onclick="removeFriend(this)" class="removeLink">unfriend</p>
+	        <p id="<%=friend.friend_id%>" onclick="unfriend(this)" class="removeLink">unfriend</p>
 	    </div>
     <% end %>
 </div>
