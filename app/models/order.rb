@@ -13,7 +13,7 @@ class Order < ApplicationRecord
 private
 
 def create_event
-  Event.create message: self
+  Event.create message:  self.user.name + " created order at " + self.place
 end
 
 
