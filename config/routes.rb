@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'welcome/index'
    get 'events/index'
     mount ActionCable.server => '/cable'
 
@@ -15,15 +16,17 @@ Rails.application.routes.draw do
 
   post '/set_friends' => 'orders#setfriends'
   post '/addfriends' =>'friendships#addFriend'
+  post '/unfriend' =>'friendships#unfriend'
+  post '/orders/finish' => 'orders#finish'
 
 
   authenticated :user do
    root 'home#index', as: 'authenticated_root'
   end
- devise_scope :user do
-   root 'devise/sessions#new'
-  end
+ # devise_scope :user do
+ #   root 'devise/sessions#new'
+ #  end
   resources :users
-  root to: "home#index"
+  root to: "welcome#index"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

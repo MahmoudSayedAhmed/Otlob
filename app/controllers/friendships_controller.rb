@@ -32,6 +32,13 @@ class FriendshipsController < ApplicationController
       end
   end
 
+
+  def unfriend
+    @friendship = Friendship.where("user_id = ? AND friend_id = ?", current_user.id, params[:fid]).first
+    @friendship.destroy
+  end
+
+
   # GET /friendships/new
   def new
     @friends = current_user.friendships
