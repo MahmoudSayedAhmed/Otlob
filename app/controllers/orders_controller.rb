@@ -88,6 +88,7 @@ class OrdersController < ApplicationController
     @order.user_id=current_user.id
     @order.status=0
     @check = @order.save
+    ActionCable.server.broadcast("user_channel1", @order)
     if @@list
       @@list.each do |friend|
         @f = User.find_by name: friend
