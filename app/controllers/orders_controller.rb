@@ -1,7 +1,6 @@
 class OrdersController < ApplicationController
 
   before_action :set_order, only: [:show, :edit, :update, :destroy]
-
   # GET /orders
   # GET /orders.json
   def index
@@ -15,17 +14,21 @@ class OrdersController < ApplicationController
     @order.save
   end
 
+  def invite
+    @@list = params[:list]
+  end
+
 
   def setfriends
-    @invitedFriend=Array.new
-    @he=User.find_by name:  params[:name]
+    @he=User.find_by name: params[:name]
     if @he
+    @img = @he.uimage (:thumb)
     @fri=Friendship.find_by_user_id_and_friend_id(current_user.id,@he.id)
       if @fri
-          @invitedFriend.push(@he.id)
           render :json => {
                          :code => 0,
-                         :user => @he
+                         :user => @he,
+                         :img => @img
                      }
         #send user data
      else
@@ -51,6 +54,27 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
+    @userGroups = Group.where("user_id = ? ", current_user.id)
+    @userFriends=Friendship.where(user_id: current_user.id)
+
+    @userFriendsNames=[]
+
+    @userFriends.each do |data|
+      @userName=User.find_by_id(data.friend_id)
+  
+      @userFriendsNames.push(@userName.name)
+    end
+    @groupsList = []
+    @userGroups.each do |g|
+      txt = g.name+":"
+      g.friendships.each do |f|
+        txt += User.find(f.friend_id).name
+        txt += "*"
+      end
+      @groupsList.push(txt)
+    end
+    #render :json => {:list => @groupsList}
+
   end
 
   # GET /orders/1/edit
@@ -62,16 +86,18 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.user_id=current_user.id
-    #add status waiting = 0
-    #finished =1
     @order.status=0
-    if @invitedFriend
-    @invitedFriend.each { |friend|
-    Inviteds.create(:order_id => @order.id , :user_id => friend)
-    }
-   end
+    @check = @order.save
+    if @@list
+      @@list.each do |friend|
+        @f = User.find_by name: friend
+        @invited = Invited.new(:order_id => @order.id , :user_id => @f.id)
+        @invited.save
+      end
+    end
+    @@list = nil
     respond_to do |format|
-      if @order.save
+      if @check
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
       else
@@ -109,15 +135,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:orderType, :place, :user_id ,:Menu )
+      params.require(:order).permit(:orderType, :place, :user_id ,:Menu)
     end
-
-
-
-
-
-
-
-
-
 end

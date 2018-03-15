@@ -3,7 +3,7 @@ function addGroup(){
     $.ajax({ 
         method: 'post',
         url: '/groups', 
-        data: {name:gName, user_id: $('#userGroups').attr('UID'), authenticity_token:$('meta[name="csrf-token"]').attr("content")},
+        data: {name:gName, authenticity_token:$('meta[name="csrf-token"]').attr("content")},
         success: function(result){if ($('#groupContainer').children().length!=0)
             $("#groupsList").append('<tr><td>'+result["str"]+'<td><i class="fa fa-user-plus" style="font-size:36px;color:blue" onclick="editGroup(this)"></i></td><td><i id="'+result["id"]+'" class="fa fa-remove" style="font-size:36px;color:red" onclick="deleteGroup(this)"></i></td>')
           else

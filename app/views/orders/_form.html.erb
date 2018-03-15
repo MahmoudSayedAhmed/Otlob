@@ -1,3 +1,5 @@
+<%= hidden_field_tag "groups", @groupsList %>
+<%= hidden_field_tag "friends", @userFriendsNames %>
 <%= form_with(model: order, local: true) do |form| %>
   <% if order.errors.any? %>
     <div id="error_explanation">
@@ -31,9 +33,19 @@
 
 
     <div class="field">
-    <%= form.label :Friend %>
-    <%= form.text_field :Friend ,id: 'friend' %>
-    <button  type="button" onclick="inviteFriend()">add</button>
+      Friend
+      <input id="friend" list="FriendList">
+      <datalist id="FriendList">
+      </datalist>
+      <button  type="button" onclick="inviteFriend()">add</button>
+    </div>
+
+    <div class="field" id="listgroup" >
+      Group
+      <input id="group" list="GroupList">
+      <datalist id="GroupList">
+      </datalist>
+      <button  type="button" onclick="inviteGroup()">add</button>
     </div>
 
 
@@ -42,18 +54,11 @@
     </div>
 
 
-
-
-
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit :Publish, onclick:"invite()"%>
   </div>
 
 
 
 
 <% end %>
-
-
-
-  <%=csrf_meta_tag%>

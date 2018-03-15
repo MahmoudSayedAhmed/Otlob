@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   post '/addfriends' =>'friendships#addFriend'
   post '/unfriend' =>'friendships#unfriend'
   post '/orders/finish' => 'orders#finish'
+  post '/orders/load' => 'orders#load'
+  post '/orders/invite' => 'orders#invite'
 
 
   authenticated :user do
