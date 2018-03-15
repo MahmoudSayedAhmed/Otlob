@@ -28,7 +28,7 @@ function finish(e){
       url : '/orders/finish',
       data: {authenticity_token:$('meta[name="csrf-token"]').attr("content"), gid: $(e).attr('id')},
       success: function(result){
-        $(e).parent().prev().text('Finished')
+        $(e).prev().prev().text('Finished')
         $(e).next().remove()
         $(e).remove()
       }
