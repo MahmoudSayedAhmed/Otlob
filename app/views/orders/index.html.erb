@@ -1,17 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Orders</h1>
+<h1 class="etharak knockout">Orders</h1>
       <% if @userOrders.size != 0 %>
 
-<table class="table table-striped table-responsive w-auto">
+<div class="fresh-table full-color-blue etharak">
+<table id="fresh-table" class="table">
   <thead>
     <tr>
-      <th scope="col">Type</th>
-      <th scope="col">Place</th>
-      <th scope="col">Invited</th>
-      <th scope="col">Joiend</th>
-      <th scope="col">Status</th>
-      <th scope="col">Actions</th>
+      <th data-field="Type">Type</th>
+      <th data-field="Place">Place</th>
+      <th data-field="Invited">Invited</th>
+      <th data-field="Joiend">Joiend</th>
+      <th data-field="Status">Status</th>
+      <th data-field="Actions" data-formatter="operateFormatter" data-events="operateEvents">Actions</th>
     </tr>
   </thead>
 
@@ -24,25 +25,25 @@
               <% else %>
                 <th scope="row"> Lunch </td>
               <% end %>
-              <td><%= order.place %></td>
-              <td>10</td>
-              <td>5</td>
+              <td style="text-align: left;"><%= order.place %></td>
+              <td style="text-align: left;">10</td>
+              <td style="text-align: left;">5</td>
               <% if order.status %>
-              <td> Finished </td>
-              <td><%= link_to 'view', order %></td>
+              <td style="text-align: left;"> Finished </td>
+              <td style="text-align: left;"><%= link_to 'view', order %></td>
               <% else %>
-              <td>waiting</td>
-              <td text-left table-actions>
-                <%= link_to 'view', order %></td>
-                <td class="finishLink" id="<%= order.id %>" onclick="finish(this)">finish</td>
-                  <i class="ti-pencil"> </i>
-                <td class="finishLink" onclick="destroy(this)">cancel</td>
+              <td style="text-align: left;">waiting</td>
+              <td table-actions style="text-align: left;">
+                <%= link_to 'view', order %>
+                <p class="finishLink" id="<%= order.id %>" onclick="finish(this)">finish</p>
+                <p class="finishLink" onclick="destroy(this)">cancel</p>
               </td>
               <% end %>
             </tr>
       <% end %>
   </tbody>
 </table>
+</div>
           <% else %>
        <p>you have no orders</p>
               <% end %>
