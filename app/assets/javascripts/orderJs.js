@@ -1,6 +1,7 @@
 toInviteList = []
 groupNames = []
 groupsList = {}
+friendsNamesList=[]
 if($("#groups").val())
 {
   gtxts = $("#groups").val().split(' ')
@@ -13,6 +14,17 @@ if($("#groups").val())
     groupsList[key]=value;
   }
 }
+
+if($("#friends").val())
+{
+  console.log("wsl"+$("#friends").val())
+  gtxts = $("#friends").val().split(' ')
+  for (var i=0; i<gtxts.length; i++)
+  {
+       friendsNamesList.push(gtxts[i])
+  }
+}
+
 
 function inviteFriend(name){
   if(name)
@@ -68,6 +80,24 @@ function finish(e){
   })
 
 }
+$(document).on('turbolinks:load', pageload);
+var pageload= function ()
+{
+
+   groupNames.forEach(function(entry) {
+    $('#GroupList').append("<option value="+entry+"></option>")
+    });
+
+   console.log(friendsNamesList)
+
+    friendsNamesList.forEach(function(entry) {
+     $('#FriendList').append("<option value="+entry+"></option>")
+     });
+
+
+
+}
+
 
 function destroy(e){
 $.ajax({

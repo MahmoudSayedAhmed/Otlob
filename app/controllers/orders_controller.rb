@@ -55,6 +55,15 @@ class OrdersController < ApplicationController
   def new
     @order = Order.new
     @userGroups = Group.where("user_id = ? ", current_user.id)
+    @userFriends=Friendship.where(user_id: current_user.id)
+
+    @userFriendsNames=[]
+
+    @userFriends.each do |data|
+      @userName=User.find_by_id(data.friend_id)
+  
+      @userFriendsNames.push(@userName.name)
+    end
     @groupsList = []
     @userGroups.each do |g|
       txt = g.name+":"
@@ -65,7 +74,7 @@ class OrdersController < ApplicationController
       @groupsList.push(txt)
     end
     #render :json => {:list => @groupsList}
-    
+
   end
 
   # GET /orders/1/edit
