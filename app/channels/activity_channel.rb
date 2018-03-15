@@ -1,4 +1,4 @@
-class ActivityChannel < ApplicationCable::Channel
+1qclass ActivityChannel < ApplicationCable::Channel
   def subscribed
     stream_from "activity_channel"
   end

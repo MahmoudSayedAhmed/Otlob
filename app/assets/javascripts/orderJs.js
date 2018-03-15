@@ -17,7 +17,6 @@ if($("#groups").val())
 
 if($("#friends").val())
 {
-  console.log("wsl"+$("#friends").val())
   gtxts = $("#friends").val().split(' ')
   for (var i=0; i<gtxts.length; i++)
   {
@@ -88,13 +87,9 @@ var pageload= function ()
     $('#GroupList').append("<option value="+entry+"></option>")
     });
 
-   console.log(friendsNamesList)
-
     friendsNamesList.forEach(function(entry) {
      $('#FriendList').append("<option value="+entry+"></option>")
      });
-
-
 
 }
 
