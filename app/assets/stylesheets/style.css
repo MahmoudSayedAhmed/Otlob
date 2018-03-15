@@ -1,7 +1,33 @@
+.knockout {
+  background: url(http://apod.nasa.gov/apod/image/0603/coma_misti.jpg) -80px -80px;
+  color: red;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  font-weight: bold;
+  font-size: 80px;
+  font-family: arial, helvetica;
+  width: 500px;
+  margin: 100px 100px;
+  text-align: center;
+}
+
+/*body{
+  background: #444;
+}*/
 
 
+.etharak{
+text-align: center;
+margin:100px 300px;
+}
 
 
+.table{
+  background-color: black;
+  width: 850px;
+  border-radius: 20px;
+  margin: 100px auto;
+}
 
 body{
 background:linear-gradient(to bottom,rgba(0,0,0,0.6) 0%, rgba(255,255,255,0.2) 100%), url("back.jpg");
@@ -435,54 +461,6 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 .gtco-video.gtco-video-sm {
   height: 250px;
-}
-.gtco-video a {
-  z-index: 1001;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-top: -45px;
-  margin-left: -45px;
-  width: 90px;
-  height: 90px;
-  display: table;
-  text-align: center;
-  background: #fff;
-  -webkit-box-shadow: 0px 14px 30px -15px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px 14px 30px -15px rgba(0, 0, 0, 0.75);
-  box-shadow: 0px 14px 30px -15px rgba(0, 0, 0, 0.75);
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  border-radius: 50%;
-}
-.gtco-video a i {
-  text-align: center;
-  display: table-cell;
-  vertical-align: middle;
-  font-size: 40px;
-}
-.gtco-video .overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  -webkit-transition: 0.5s;
-  -o-transition: 0.5s;
-  transition: 0.5s;
-}
-.gtco-video:hover .overlay {
-  background: rgba(0, 0, 0, 0.7);
-}
-.gtco-video:hover a {
-  position: relative;
-  -webkit-transform: scale(1.2);
-  -moz-transform: scale(1.2);
-  -ms-transform: scale(1.2);
-  -o-transform: scale(1.2);
-  transform: scale(1.2);
 }
 
 .gtco-cover {
@@ -1894,4 +1872,6 @@ i{
 .finishLink{
   cursor: pointer;
   color: gray;
+  display: inline-block;
+  margin: 5px;
 }
