@@ -2,6 +2,8 @@
 
 one:
   message: MyString
+  invited: one
 
 two:
   message: MyString
+  invited: two
