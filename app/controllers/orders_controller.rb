@@ -57,21 +57,23 @@ class OrdersController < ApplicationController
     @userGroups = Group.where("user_id = ? ", current_user.id)
     @userFriends=Friendship.where(user_id: current_user.id)
 
-    @userFriendsNames=[]
+    @userFriendsNames=""
 
     @userFriends.each do |data|
       @userName=User.find_by_id(data.friend_id)
   
-      @userFriendsNames.push(@userName.name)
+      @userFriendsNames+=@userName.name
+      @userFriendsNames+="*"
     end
-    @groupsList = []
+    @groupsList = ""
     @userGroups.each do |g|
       txt = g.name+":"
       g.friendships.each do |f|
         txt += User.find(f.friend_id).name
         txt += "*"
       end
-      @groupsList.push(txt)
+      @groupsList+=txt
+      @groupsList+="&"
     end
     #render :json => {:list => @groupsList}
 
@@ -88,7 +90,6 @@ class OrdersController < ApplicationController
     @order.user_id=current_user.id
     @order.status=0
     @check = @order.save
-    ActionCable.server.broadcast("user_channel1", @order)
     if @@list
       @@list.each do |friend|
         @f = User.find_by name: friend
@@ -125,6 +126,12 @@ class OrdersController < ApplicationController
   # DELETE /orders/1
   # DELETE /orders/1.json
   def destroy
+    @inviteds = Invited.where(order_id: @order.id)
+    if @inviteds
+      @inviteds.each do |i|
+        Event.where(invited_id: i.id).first.destroy
+      end
+    end 
     @order.destroy
   end
 

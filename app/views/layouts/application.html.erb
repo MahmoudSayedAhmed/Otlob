@@ -39,7 +39,10 @@
               <% else %>
                 <li><%= link_to('Login', new_user_session_path)  %>  </li>
               <% end %>
-             
+
+              <!-- Notification Icon -->
+
+            <!-- end notificatuion -->
             <li class="nav-item active">
               <%= link_to 'Home |' , home_index_url , :class => "btn-cta" %>
             </li>
@@ -58,7 +61,8 @@
       </div>
       </div>
     </nav>
-
+    <div id="notification">
+    </div>
     <%= yield %>
     <%= javascript_include_tag 'JSGroups'%>
     <%= javascript_include_tag 'jquery.min'%>
