@@ -24,6 +24,9 @@ if($("#friends").val())
   friendsNamesList = ftxts
 }
 
+// console.log(friendsNamesList)
+// console.log(groupsList)
+
 function inviteFriend(name){
   if(name)
     fName = name

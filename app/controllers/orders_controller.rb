@@ -155,9 +155,19 @@ end
   # DELETE /orders/1.json
   def destroy
     @inviteds = Invited.where(order_id: @order.id)
-    if @inviteds
+    @joineds = Joined.where(order_id: @order.id)
+    if @inviteds.size !=0
       @inviteds.each do |i|
-        Event.where(invited_id: i.id).first.destroy
+        if Event.where(invited_id: i.id).first != nil
+          Event.where(invited_id: i.id).first.destroy
+        end
+      end
+    end
+    if @joineds.size !=0
+      @joineds.each do |i|
+        if Item.where(joined_id: i.id).first != nil
+          Item.where(joined_id: i.id).first.destroy
+        end
       end
     end
     @order.destroy
