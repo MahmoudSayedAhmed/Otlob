@@ -1,0 +1,8 @@
+<h1> "Invited Friends" </h1>
+
+<div id="userData">
+<% @userInvitedList.each do |user| %>
+ <p> <%= user.name  %>  </p>
+ <img src=<%= user.uimage %> >
+</div>
+<% end %>

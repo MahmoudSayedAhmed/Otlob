@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   post '/set_friends' => 'orders#setfriends'
   get 'orders/orderDetails' => 'orders#orderDetails'
+  get '/InvitedFriends' => 'orders#InvitedFriends'
   post '/orderDetails' => 'orders#AddorderDetails'
   post '/addfriends' =>'friendships#addFriend'
   post '/unfriend' =>'friendships#unfriend'

@@ -26,8 +26,8 @@
                 <th scope="row"> Lunch </td>
               <% end %>
               <td style="text-align: left;"><%= order.place %></td>
-              <td style="text-align: left;">10</td>
-              <td style="text-align: left;">5</td>
+              <td style="text-align: left;"><%=order.inviteds.size%></td>
+              <td style="text-align: left;"><%=order.joineds.size-1%></td>
               <% if order.status %>
               <td style="text-align: left;"> Finished </td>
               <td style="text-align: left;"><%= link_to 'view', order %></td>

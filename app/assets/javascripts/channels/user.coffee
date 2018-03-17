@@ -7,3 +7,7 @@ App.user = App.cable.subscriptions.create "UserChannel",
 
   received: (data) ->
     # Called when there's incoming data on the websocket for this channel
+    $("#notifications").append('<p>'+data.data.msg+' '+data.data.time+'</p>')
+    alert data.data.order_id
+
+

@@ -4,6 +4,7 @@ class Event < ApplicationRecord
   private
   def notify
   	@uid = Invited.find(self.invited_id).user_id
-  	ActionCable.server.broadcast 'user_channel'+@uid.to_s, data: self.message
+  	@oid = Order.find(Invited.find(self.invited_id).order_id).id
+  	ActionCable.server.broadcast 'user_channel'+@uid.to_s, data: {msg: self.message, order_id: @oid, time: self.created_at}
   end
 end

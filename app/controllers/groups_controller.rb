@@ -5,10 +5,11 @@ class GroupsController < ApplicationController
   # GET /groups.json
   def index
     @groups = Group.all
-    @userGroupsNames=[]
+    @userGroupsNames=""
     @userGroups = Group.where("user_id = ? ", current_user.id)
     @userGroups.each do  |group|
-      @userGroupsNames.push(group.name)
+      @userGroupsNames+=group.name
+      @userGroupsNames+="*"
     end
   end
 

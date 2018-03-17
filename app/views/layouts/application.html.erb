@@ -22,7 +22,8 @@
     <% if @notifications.size !=0 %>
       <% @notifications.each do |n| %>
         <%= n.message %>
-        <%= n.created_at %>
+        <%= time_ago_in_words(n.created_at) %>
+        ago
         </br>
       <% end %>
     <% end %>

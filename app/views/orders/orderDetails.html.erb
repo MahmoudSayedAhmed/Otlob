@@ -15,7 +15,7 @@
 <div>
 
 <div id="links">
-<p><a>friends invited click to view</a></p>
+<%= link_to 'friends invited click to view', InvitedFriends_path(:order => @order.id) %>
 <p><a>friends joined click to view</a></p>
 </div>
 
@@ -30,7 +30,7 @@
      <input type="number" id="amount" name="amount" min="0" max="1000"  value="1">
 
     <span>comment </span>
-  <input id="Comment" type="text">
+  <input id="comment" type="text">
 
   <button type="button" id="addItemBtn" onclick="addItemFunct()">add </button>
 </div>
