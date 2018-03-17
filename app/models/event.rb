@@ -3,7 +3,7 @@ class Event < ApplicationRecord
   belongs_to :invited
   private
   def notify
-  	@uid = User.find(Invited.find(self.invited_id).user_id).id
+  	@uid = Invited.find(self.invited_id).user_id
   	ActionCable.server.broadcast 'user_channel'+@uid.to_s, data: self.message
   end
 end

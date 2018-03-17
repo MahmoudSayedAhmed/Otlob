@@ -18,7 +18,15 @@
   </head>
 
   <body>
-
+  <div id="notify">
+    <% if @notifications.size !=0 %>
+      <% @notifications.each do |n| %>
+        <%= n.message %>
+        <%= n.created_at %>
+        </br>
+      <% end %>
+    <% end %>
+  </div>
   <div class="gtco-loader"></div>
   
   <nav class="gtco-nav" role="navigation">
@@ -61,7 +69,7 @@
       </div>
       </div>
     </nav>
-    <div id="notification">
+    <div id="notifications">
     </div>
     <%= yield %>
     <%= javascript_include_tag 'JSGroups'%>

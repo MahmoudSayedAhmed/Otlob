@@ -14,18 +14,18 @@ if($("#groups").val())
     value.splice(-1,1);
     groupsList[key]=value;
   }
-}
+} 
+
+
 
 if($("#friends").val())
 {
   ftxts = $("#friends").val().split('*')
   ftxts.splice(-1,1);
-  for (var i=0; i<gtxts.length; i++)
-  {
-       friendsNamesList.push(ftxts[i])
-  }
+  friendsNamesList = ftxts
 }
-
+console.log(groupsList)
+console.log(friendsNamesList)
 
 function inviteFriend(name){
   if(name)
