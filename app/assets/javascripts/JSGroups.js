@@ -91,7 +91,7 @@ function deleteGroup(e){
   var gName = $(e).parent().prev().prev().text()
   if(gName == $("#gname").text())
     $("#edittingGroup").empty()
-    var index = array.indexOf(gName);
+    var index = GroupsNames.indexOf(gName);
     GroupsNames.splice(index,1)
   $.ajax({
     type: "delete",
