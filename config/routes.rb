@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   post '/orders/finish' => 'orders#finish'
   post '/orders/load' => 'orders#load'
   post '/orders/invite' => 'orders#invite'
+  post '/orders/get_data' => 'orders#get_data'
 
 
   authenticated :user do

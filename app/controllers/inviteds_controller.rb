@@ -54,6 +54,10 @@ class InvitedsController < ApplicationController
   # DELETE /inviteds/1
   # DELETE /inviteds/1.json
   def destroy
+    @events = Event.where(invited_id: @invited.id)
+    @events.each do |e|
+      e.destroy
+    end
     @invited.destroy
     respond_to do |format|
       format.html { redirect_to inviteds_url, notice: 'Invited was successfully destroyed.' }

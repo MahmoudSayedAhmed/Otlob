@@ -4,7 +4,8 @@ groupsList = {}
 friendsNamesList=[]
 if($("#groups").val())
 {
-  gtxts = $("#groups").val().split(' ')
+  gtxts = $("#groups").val().split('&')
+  gtxts.splice(-1,1);
   for (var i=0; i<gtxts.length; i++)
   {
     key = gtxts[i].split(':')[0];
@@ -17,11 +18,11 @@ if($("#groups").val())
 
 if($("#friends").val())
 {
-  console.log("wsl"+$("#friends").val())
-  gtxts = $("#friends").val().split(' ')
+  ftxts = $("#friends").val().split('*')
+  ftxts.splice(-1,1);
   for (var i=0; i<gtxts.length; i++)
   {
-       friendsNamesList.push(gtxts[i])
+       friendsNamesList.push(ftxts[i])
   }
 }
 
@@ -78,23 +79,18 @@ function finish(e){
         $(e).remove()
       }
   })
-
 }
 $(document).on('turbolinks:load', pageload);
 var pageload= function ()
 {
 
    groupNames.forEach(function(entry) {
-    $('#GroupList').append("<option value="+entry+"></option>")
+    $('#GroupList').append("<option value='"+entry+"'></option>")
     });
 
-   console.log(friendsNamesList)
-
     friendsNamesList.forEach(function(entry) {
-     $('#FriendList').append("<option value="+entry+"></option>")
+     $('#FriendList').append("<option value='"+entry+"'></option>")
      });
-
-
 
 }
 

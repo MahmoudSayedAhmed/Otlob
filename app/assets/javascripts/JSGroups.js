@@ -2,7 +2,7 @@ GroupsNames=[]
 
 if($("#usergroups").val())
 {
-  gtxts = $("#usergroups").val().split(' ')
+  gtxts = $("#usergps").val().split(' ')
   for (var i=0; i<gtxts.length; i++)
   {
        GroupsNames.push(gtxts[i])
