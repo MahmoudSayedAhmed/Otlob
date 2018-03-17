@@ -88,13 +88,8 @@ end
 
     @userFriends.each do |data|
       @userName=User.find_by_id(data.friend_id)
-<<<<<<< HEAD
-      @userFriendsNames.push(@userName.name)
-=======
-
       @userFriendsNames+=@userName.name
       @userFriendsNames+="*"
->>>>>>> 4a42895aa39b4d9a77318b0c4bb9108d0c1e3e03
     end
     @groupsList = ""
     @userGroups.each do |g|
