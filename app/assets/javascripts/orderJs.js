@@ -17,15 +17,12 @@ if($("#groups").val())
 } 
 
 
-
 if($("#friends").val())
 {
   ftxts = $("#friends").val().split('*')
   ftxts.splice(-1,1);
   friendsNamesList = ftxts
 }
-console.log(groupsList)
-console.log(friendsNamesList)
 
 function inviteFriend(name){
   if(name)
