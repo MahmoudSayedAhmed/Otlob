@@ -1,4 +1,8 @@
 class Invited < ApplicationRecord
+<<<<<<< HEAD
+  belongs_to :order
+  belongs_to :user
+=======
   after_create_commit{create_event}
   belongs_to :order
   belongs_to :user
@@ -17,4 +21,5 @@ class Invited < ApplicationRecord
  	puts @txt
  	@event = Event.create(message: @txt, invited_id: self.id)
  end
+>>>>>>> 4a42895aa39b4d9a77318b0c4bb9108d0c1e3e03
 end
