@@ -34,7 +34,12 @@ end
 
 
 def InvitedFriends
-  @InvitedList=Invited.where(:order_id =>params[:orderId])
+  @userInvitedList=[]
+  @InvitedList=Invited.where(:order_id =>params[:order])
+  @InvitedList.each do |user|
+    @user=User.find_by(:id => user.user_id)
+    @userInvitedList.push(@user)
+  end
 end
 
 

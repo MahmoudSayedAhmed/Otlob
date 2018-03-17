@@ -14,7 +14,7 @@ if($("#groups").val())
     value.splice(-1,1);
     groupsList[key]=value;
   }
-} 
+}
 
 
 
@@ -140,7 +140,7 @@ function addItemFunct()
       url : '/orderDetails',
       data: {orderId:orderId,item:item ,price:price, amount:amount ,comment:comment ,authenticity_token:$('meta[name="csrf-token"]').attr("content")},
       success: function(re){
-          alert("done")
+          //alert("done")
           $("#orders").append("<tr><td>"+re.person+"</td> <td>"+item+"</td> <td>"+amount+"</td> <td>"+price+"</td> <td>"+comment+"</td> </tr>")
         }
   })
