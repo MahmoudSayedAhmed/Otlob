@@ -30,8 +30,11 @@ def AddorderDetails
   render :json => {
                  :person=> current_user.name
              }
+end
 
 
+def InvitedFriends
+  @InvitedList=Invited.where(:order_id =>params[:orderId])
 end
 
 
