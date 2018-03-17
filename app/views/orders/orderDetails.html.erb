@@ -1,0 +1,36 @@
+
+ <h1> Order Details  <h1>
+ <%= hidden_field_tag "orderId", @order.id%>
+
+<div id="ordersTable">
+<table id="orders" border="1">
+  <tr>
+    <th>Person</th>
+    <th>Item</th>
+    <th>amount</th>
+    <th>Price</th>
+    <th>Comment</th>
+  </tr>
+</table>
+<div>
+
+<div id="links">
+<p><a>friends invited click to view</a></p>
+<p><a>friends joined click to view</a></p>
+</div>
+
+<div id="addITem">
+  <span>item </span>
+  <input id="item" type="text">
+
+    <span>price </span>
+    <input type="number" id="price" name="price" min="0" max="1000"  value="3">
+
+      <span>amount </span>
+     <input type="number" id="amount" name="amount" min="0" max="1000"  value="1">
+
+    <span>comment </span>
+  <input id="Comment" type="text">
+
+  <button type="button" id="addItemBtn" onclick="addItemFunct()">add </button>
+</div>

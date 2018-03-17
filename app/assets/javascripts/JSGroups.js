@@ -1,27 +1,55 @@
+GroupsNames=[]
+
+if($("#usergroups").val())
+{
+  gtxts = $("#usergroups").val().split(' ')
+  for (var i=0; i<gtxts.length; i++)
+  {
+       GroupsNames.push(gtxts[i])
+  }
+
+}
+  console.log(GroupsNames)
 function addGroup(){
   gName = $("#group").val()
-    $.ajax({ 
+  if ($.inArray(gName,GroupsNames) == -1)
+  {
+    $.ajax({
         method: 'post',
-        url: '/groups', 
+        url: '/groups',
         data: {name:gName, authenticity_token:$('meta[name="csrf-token"]').attr("content")},
         success: function(result){if ($('#groupContainer').children().length!=0)
             $("#groupsList").append('<tr><td>'+result["str"]+'<td><i class="fa fa-user-plus" style="font-size:36px;color:blue" onclick="editGroup(this)"></i></td><td><i id="'+result["id"]+'" class="fa fa-remove" style="font-size:36px;color:red" onclick="deleteGroup(this)"></i></td>')
           else
             buildPage(result["str"],result["id"]);
         }
-        
+
     })
+    GroupsNames.push(gName)
+  }
+  else {
+    alert("already exist")
+  }
 }
+
+
+
+
+
+
 
 
 function addFriendToGroup(){
   fname = $("#friend").val()
-    $.ajax({ 
+    $.ajax({
         method: 'post',
-        url: '/friendships_groups', 
+        url: '/friendships_groups',
         data: {friendName:fname, group_id:$('#edittingGroup').attr('gid'), authenticity_token:$('meta[name="csrf-token"]').attr("content")},
         dataType: "json",
-        success: function(result){$("#friendList").append('<div><img src="'+result["ImgSrc"]+'" ><p>'+result["str"]+'</p><p id="'+result["fid"]+'" onclick="removeFriendFromGroup(this)" class="removeLink">remove</p></div>')}
+        success: function(result){$("#friendList").append('<div><img src="'+result["ImgSrc"]+'" ><p>'+result["str"]+'</p><p id="'+result["fid"]+'" onclick="removeFriendFromGroup(this)" class="removeLink">remove</p></div>')},
+         error: function (result) {
+           alert("wrong entry")}
+
     })
 }
 
@@ -63,6 +91,8 @@ function deleteGroup(e){
   var gName = $(e).parent().prev().prev().text()
   if(gName == $("#gname").text())
     $("#edittingGroup").empty()
+    var index = array.indexOf(gName);
+    GroupsNames.splice(index,1)
   $.ajax({
     type: "delete",
     url: '/groups/'+$(e).attr('id'),

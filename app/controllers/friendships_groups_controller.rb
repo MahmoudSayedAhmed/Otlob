@@ -10,7 +10,7 @@ class FriendshipsGroupsController < ApplicationController
 		puts @img
 		respond_to do |format|
 			if @join.save
-    			format.json { render json: {"str": @data, "fid": @ID, "ImgSrc": @img} }
+    			format.json { render json: {"str": @data, "fid": @ID, "ImgSrc": @img } }
       		end
   		end
 	end
