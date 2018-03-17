@@ -19,6 +19,33 @@ class OrdersController < ApplicationController
   end
 
 
+  def orderDetails
+
+  end
+
+def AddorderDetails
+  @joinId=Joined.find_by(:order_id =>params[:orderId]  ,:user_id =>current_user.id )
+  @item = Item.new(:name => params[:item] , :amount => params[:amount] , :price => params[:price],:comment => params[:comment] ,:joined_id=>@joinId.id)
+  @item.save
+  render :json => {
+                 :person=> current_user.name
+             }
+
+
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
   def setfriends
     @he=User.find_by name: params[:name]
     if @he
@@ -61,7 +88,6 @@ class OrdersController < ApplicationController
 
     @userFriends.each do |data|
       @userName=User.find_by_id(data.friend_id)
-  
       @userFriendsNames+=@userName.name
       @userFriendsNames+="*"
     end
@@ -98,10 +124,12 @@ class OrdersController < ApplicationController
       end
     end
     @@list = nil
+    @joined=Joined.new(:order_id => @order.id , :user_id => current_user.id)
+    @joined.save
     respond_to do |format|
       if @check
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
-        format.json { render :show, status: :created, location: @order }
+        format.html { render orders_orderDetails_path, notice: 'Order was successfully created.' }
+        format.json { render  json: @order }
       else
         format.html { render :new }
         format.json { render json: @order.errors, status: :unprocessable_entity }
@@ -131,7 +159,7 @@ class OrdersController < ApplicationController
       @inviteds.each do |i|
         Event.where(invited_id: i.id).first.destroy
       end
-    end 
+    end
     @order.destroy
   end
 

@@ -14,18 +14,18 @@ if($("#groups").val())
     value.splice(-1,1);
     groupsList[key]=value;
   }
-}
+} 
+
+
 
 if($("#friends").val())
 {
   ftxts = $("#friends").val().split('*')
   ftxts.splice(-1,1);
-  for (var i=0; i<gtxts.length; i++)
-  {
-       friendsNamesList.push(ftxts[i])
-  }
+  friendsNamesList = ftxts
 }
-
+console.log(groupsList)
+console.log(friendsNamesList)
 
 function inviteFriend(name){
   if(name)
@@ -124,6 +124,24 @@ function invite()
       data: {authenticity_token:$('meta[name="csrf-token"]').attr("content"), list: toInviteList},
       success: function(result){
           toInviteList = []
+        }
+  })
+}
+
+function addItemFunct()
+{
+  item=$("#item").val()
+  price=$("#price").val()
+  amount=$("#amount").val()
+  comment=$("#comment").val()
+  orderId=$("#orderId").val()
+  $.ajax({
+      method : 'post',
+      url : '/orderDetails',
+      data: {orderId:orderId,item:item ,price:price, amount:amount ,comment:comment ,authenticity_token:$('meta[name="csrf-token"]').attr("content")},
+      success: function(re){
+          alert("done")
+          $("#orders").append("<tr><td>"+re.person+"</td> <td>"+item+"</td> <td>"+amount+"</td> <td>"+price+"</td> <td>"+comment+"</td> </tr>")
         }
   })
 }

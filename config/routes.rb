@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'welcome/index'
+   get 'welcome/index'
    get 'events/index'
     mount ActionCable.server => '/cable'
 
@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   post '/set_friends' => 'orders#setfriends'
+  get 'orders/orderDetails' => 'orders#orderDetails'
+  post '/orderDetails' => 'orders#AddorderDetails'
   post '/addfriends' =>'friendships#addFriend'
   post '/unfriend' =>'friendships#unfriend'
   post '/orders/finish' => 'orders#finish'
