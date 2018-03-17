@@ -34,18 +34,6 @@ def AddorderDetails
 
 end
 
-
-
-
-
-
-
-
-
-
-
-
-
   def setfriends
     @he=User.find_by name: params[:name]
     if @he

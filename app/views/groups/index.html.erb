@@ -3,18 +3,20 @@
 <%= hidden_field_tag "usergps", @userGroupsNames %>
 
   <div class="row">
-    <div class="col-sm-10 col-sm-offset-1 text-center">
-<h1 id="userGroups" UID="<%= current_user.id %>">Groups</h1>
-
-<h1>Groups</h1>
-<h3>Adding group</h3>
-<p>name</p>
-<input id="group">
-<button onclick="addGroup()">add</button>
-<div id="groupContainer">
-  <% if @userGroups.size != 0 %>
-    <h3>My Groups</h3>
-    <table>
+    <div class="col-md-6 text-center">
+      <h1 class=" knockout" id="userGroups" UID="<%= current_user.id %>">Groups</h1>
+<div class="divborder">
+      <h3 >Adding group</h3>
+      <p>name</p>
+      <input id="group">
+      <button class="btn-cta" onclick="addGroup()">add</button>
+</div>
+  </div>
+  <div class="col-md-6 " id="groupContainer">
+    <% if @userGroups.size != 0 %>
+      <h3 style="padding-top: 150px";>My Groups</h3>
+      <div class="emshy divborder">
+      <table>
       <thead>
         <tr>
           <th>Name</th>
@@ -22,7 +24,7 @@
         </tr>
       </thead>
 
-      <tbody id="groupsList">
+      <tbody  id="groupsList">
         <% @userGroups.each do |group| %>
           <% if group.user_id == current_user.id%>
             <tr>
@@ -33,13 +35,14 @@
           <% end %>
         <% end %>
       </tbody>
+</div>
     </table>
     </br>
     <div id="edittingGroup" gid="<%= @userGroups.first.id %>">
       <h3 id="gname"><%= @userGroups.first.name %></h3>
       <p>your friend name</p>
       <input class="field" id="friend">
-      <button class="actions" onclick="addFriendToGroup()">add</button>
+      <button class="btn-cta" onclick="addFriendToGroup()">add</button>
       <div id="friendList">
         <% @userGroups.first.friendships.each do |fs| %>
           <div>
@@ -51,6 +54,8 @@
       </div>
     </div>
   <% end %>
+    </div>
+</div>
 </div>
 </div>
 </div>

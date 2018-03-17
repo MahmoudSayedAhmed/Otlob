@@ -1,19 +1,39 @@
 .knockout {
-  background: url(http://apod.nasa.gov/apod/image/0603/coma_misti.jpg) -40px -40px;
-  color: red;
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
   font-size: 80px;
   font-family: helvetica;
-  width: 500px;
-  margin: 100px 100px;
-  text-align: center;
+  margin: 4px 1px;
 }
 
-/*body{
-  background: #444;
-}*/
+.divborder{
+  position: absolute;
+  border: outset; 
+  border-color: black;
+  border-radius: 15px 50px 30px;
+  margin-right: 40%;
+  /*margin: 100px 100px;*/
+}
 
+.footer {
+
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: black;
+   color: white;
+   font-family: helvetica;
+   text-align: center;
+}
+
+.emshy{
+  margin-right: 10%;
+}
+
+.titlemove{
+  padding: 20px;
+  position: absolute;
+
+}
 
 .etharak{
 text-align: center;
@@ -31,8 +51,16 @@ position: absolute;
   margin-left: 100px;
 }
 
+ .loginback{
+background:linear-gradient(to bottom,rgba(0,0,0,0.2) 0%, rgba(255,255,255,0) 100%), url("loginback.jpg");
+/*background-repeat:no-repeat;*/
+background-size: cover;
+
+color: white;
+}
+
 body{
-background:linear-gradient(to bottom,rgba(0,0,0,0.6) 0%, rgba(255,255,255,0.2) 100%), url("back2.jpg");
+background:linear-gradient(to bottom,rgba(0,0,0,0.2) 0%, rgba(255,255,255,0.2) 100%), url("back2.jpg");
 background-repeat:no-repeat;
 background-size: cover;
 
@@ -303,6 +331,26 @@ h1, h2, h3, h4, h5, h6, figure {
   -moz-border-radius: 7px;
   -ms-border-radius: 7px;
   border-radius: 7px;
+}
+.button{
+    border: 2px solid rgba(255, 255, 255, 0.5);
+  padding: 4px 20px;
+  color: black;
+  display: -moz-inline-stack;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -ms-border-radius: 7px;
+  border-radius: 7px;
+}
+.button:hover{
+  background-color: black;
+  color: white;
 }
 .gtco-nav ul li.btn-cta a:hover span {
   background: #fff;
@@ -1489,7 +1537,7 @@ form label {
   width: 100%;
   height: 100%;
   z-index: 9999;
-  background: url(../images/loader.gif) center no-repeat #fff;
+  background: url("loader.gif") center no-repeat black;
 }
 
 .js .animate-box {
