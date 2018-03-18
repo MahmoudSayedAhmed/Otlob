@@ -133,8 +133,8 @@ function invite()
 function cancelitem(e)
 {
  MyId=$("#MyId").val()
- console.log(MyId)
- console.log((e).parent().parent().attr("value"))
+ //console.log(MyId)
+ //console.log($(e).parent().parent().attr("value"))
  if($(e).parent().parent().attr("value") == MyId)
  {
    $.ajax({

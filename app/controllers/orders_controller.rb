@@ -13,6 +13,14 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:gid])
     @order.status = 1
     @order.save
+    @inviteds = Invited.where(order_id: params[:gid])
+    if @inviteds.size !=0
+      @inviteds.each do |inv|
+        @event = Event.find_by invited_id: inv.id
+        @event.status = 5
+        @event.save
+      end
+    end
   end
 
   def invite

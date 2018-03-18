@@ -63,9 +63,13 @@
                             <img src="<%= User.find(Order.find(Invited.find(n.invited_id).order_id).user_id).uimage (:thumb) %>" class="w-50" style="float: left; margin-left: 10px;">
                           </div>
                           <div class="col-lg-12 col-sm-12 col-12" style="color: black; margin-left: 10px;"><%= n.message %> <%= time_ago_in_words(n.created_at) %> ago</div>
+                          <%= n.status %>
+                          <% if n.status==0 %>
                           <button id="<%= Invited.find(n.invited_id).order_id %>" style="background-color: #4CAF50; color: white" onclick="joinOrder(this)">Join</button>
-                          <button style="background-color: #f44336; color: white" onclick="cancelOrder(this)>Cancel</button>
-
+                          <button style="background-color: #f44336; color: white" onclick="cancelOrder(this)">Cancel</button>
+                          <% elsif n.status==1 %>
+                          <button id="<%= Invited.find(n.invited_id).order_id %>" style="background-color: #4CAF50; color: white" onclick="goOrder(this)">Go</button>
+                          <% end %>
                         </div>
                         <div role="separator" class="divider"></div>
                       </li>
