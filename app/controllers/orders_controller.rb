@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
 
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_order, only: [:show, :edit, :update, :destroy, :orderDetails]
   # GET /orders
   # GET /orders.json
   def index
@@ -72,6 +72,10 @@ end
   # GET /orders/1
   # GET /orders/1.json
   def show
+    respond_to do |format|
+        format.html { redirect_to "/orders/orderDetails/#{@order.id}"}
+        format.json { render  json: @order }
+    end
   end
 
   # GET /orders/new
@@ -124,7 +128,7 @@ end
     @joined.save
     respond_to do |format|
       if @check
-        format.html { render orders_orderDetails_path, notice: 'Order was successfully created.' }
+        format.html { redirect_to "/orders/orderDetails/#{@order.id}", notice: 'Order was successfully created.' }
         format.json { render  json: @order }
       else
         format.html { render :new }

@@ -16,6 +16,7 @@ class ApplicationController < ActionController::Base
 			@event = Event.find_by invited_id: inv.id
 			@notifications.push(@event)
 		end
+    @notifications = @notifications.last(3)
 	end
   end
 

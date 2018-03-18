@@ -12,6 +12,11 @@ class JoinedsController < ApplicationController
   def show
   end
 
+  def add
+    @joined = Joined.new(:order_id => params[:oid] , :user_id => current_user.id)
+    @joined.save
+  end
+
   # GET /joineds/new
   def new
     @joined = Joined.new

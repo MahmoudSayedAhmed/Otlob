@@ -11,6 +11,19 @@
     <th>Price</th>
     <th>Comment</th>
   </tr>
+  <% @order.joineds.each do |j| %>
+    <% if j.items.size != 0 %>
+      <% j.items.each do |i| %>
+        <tr>
+        <td><%= User.find(Joined.find(i.joined_id).user_id).name %></td>
+        <td><%= i.name %></td>
+        <td><%= i.amount %></td>
+        <td><%= i.price %></td>
+        <td><%= i.comment %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  <% end %>
 </table>
 <div>
 

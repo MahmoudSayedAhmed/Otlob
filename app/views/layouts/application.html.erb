@@ -59,11 +59,11 @@
                       <li class="notification-box">
                         <div class="row">
                           <div class="col-lg-6 col-sm-6 col-6 text-center">
-                            <img src="/system/users/uimages/000/000/002/thumb/150.jpeg?1520939740" class="w-50" style="float: left; margin-left: 10px;">
+                            <img src="<%= User.find(Order.find(Invited.find(n.invited_id).order_id).user_id).uimage (:thumb) %>" class="w-50" style="float: left; margin-left: 10px;">
                           </div>    
                           <div class="col-lg-12 col-sm-12 col-12" style="color: black; margin-left: 10px;"><%= n.message %> <%= time_ago_in_words(n.created_at) %> ago</div>  
-                          <button style="background-color: #4CAF50; color: white">Join</button> 
-                          <button style="background-color: #f44336; color: white">Cancel</button> 
+                          <button id="<%= Invited.find(n.invited_id).order_id %>" style="background-color: #4CAF50; color: white" onclick="joinOrder(this)">Join</button> 
+                          <button style="background-color: #f44336; color: white" onclick="cancelOrder(this)>Cancel</button> 
 
                         </div>
                         <div role="separator" class="divider"></div>
@@ -71,8 +71,8 @@
                       <% end %>
                       <% end %>
                       </ul>
-                      <li class="footer bg-dark text-center">
-                        <a href="" class="text-light" style="color: blue">View All</a>
+                      <li class="bg-dark text-center">
+                        <a href="/events/index" class="text-light" style="color: blue">View All</a>
                       </li>
                     </ul>
                 </li>
@@ -95,8 +95,6 @@
       </div>
       </div>
     </nav>
-    <div id="notifications">
-    </div>
 
     <div class="footer">
       <p>Copy Rights resreved for Otlob©</p>
@@ -104,6 +102,7 @@
     </div>
 
     <%= yield %>
+    <%= javascript_include_tag 'notify'%>
     <%= javascript_include_tag 'JSGroups'%>
     <%= javascript_include_tag 'jquery.min'%>
     <%= javascript_include_tag 'jquery.waypoints.min'%>
