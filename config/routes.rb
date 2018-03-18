@@ -17,6 +17,7 @@ devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_call
   post '/set_friends' => 'orders#setfriends'
   get '/orders/orderDetails/:id' => 'orders#orderDetails'
   get '/InvitedFriends' => 'orders#InvitedFriends'
+  get '/JoinedFriends' => 'orders#JoinedFriends'
   post '/orderDetails' => 'orders#AddorderDetails'
   post '/addfriends' =>'friendships#addFriend'
   post '/unfriend' =>'friendships#unfriend'

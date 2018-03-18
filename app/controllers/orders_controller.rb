@@ -42,6 +42,18 @@ def InvitedFriends
   end
 end
 
+
+
+def JoinedFriends
+  @userJoinedList=[]
+  @JoinedList=Joined.where(:order_id =>params[:order])
+  @JoinedList.each do |user|
+    @user=User.find_by(:id => user.user_id)
+    @userJoinedList.push(@user)
+  end
+
+end
+
   def setfriends
     @he=User.find_by name: params[:name]
     if @he
