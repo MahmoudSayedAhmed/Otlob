@@ -19,24 +19,25 @@
 
   <body>
   <div class="gtco-loader"></div>
-  
+
   <nav class="gtco-nav" role="navigation">
 
     <div class="gtco-container">
- 
+
       <div class="row">
         <div class="col-sm-4 col-xs-4">
-          <div id="gtco-logo"> 
+          <div id="gtco-logo">
             <%= image_tag("otlop.png", class: "img-responsive image", id: "navbar-logo") %>
           </div>
         </div>
               <div class="col-xs-8 text-right menu-1">
           <ul>
-              
+
              <% if user_signed_in? %>
                 <li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
               <% else %>
                 <li><%= link_to('Login', new_user_session_path)  %>  </li>
+
               <% end %>
 
               <!-- Notification Icon -->
@@ -55,15 +56,15 @@
                       <!-- <div id="notify"></div> -->
                       <% if @notifications.size !=0 %>
                       <% @notifications.reverse.each do |n| %>
-                      
+
                       <li class="notification-box">
                         <div class="row">
                           <div class="col-lg-6 col-sm-6 col-6 text-center">
                             <img src="<%= User.find(Order.find(Invited.find(n.invited_id).order_id).user_id).uimage (:thumb) %>" class="w-50" style="float: left; margin-left: 10px;">
-                          </div>    
-                          <div class="col-lg-12 col-sm-12 col-12" style="color: black; margin-left: 10px;"><%= n.message %> <%= time_ago_in_words(n.created_at) %> ago</div>  
-                          <button id="<%= Invited.find(n.invited_id).order_id %>" style="background-color: #4CAF50; color: white" onclick="joinOrder(this)">Join</button> 
-                          <button style="background-color: #f44336; color: white" onclick="cancelOrder(this)>Cancel</button> 
+                          </div>
+                          <div class="col-lg-12 col-sm-12 col-12" style="color: black; margin-left: 10px;"><%= n.message %> <%= time_ago_in_words(n.created_at) %> ago</div>
+                          <button id="<%= Invited.find(n.invited_id).order_id %>" style="background-color: #4CAF50; color: white" onclick="joinOrder(this)">Join</button>
+                          <button style="background-color: #f44336; color: white" onclick="cancelOrder(this)>Cancel</button>
 
                         </div>
                         <div role="separator" class="divider"></div>
@@ -98,7 +99,7 @@
 
     <div class="footer">
       <p>Copy Rights resreved for Otlob©</p>
-      
+
     </div>
 
     <%= yield %>

@@ -11,7 +11,9 @@ gem 'jquery-rails'
 gem 'composite_primary_keys', '~> 10.0', '>= 10.0.3'
 gem 'paperclip',' ~>4.2'
 gem 'omniauth-facebook'
-gem 'figaro'
+
+gem 'omniauth'
+gem "omniauth-google-oauth2", "~> 0.2.1"
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.5'
