@@ -5,6 +5,7 @@ class Event < ApplicationRecord
   def notify
   	@uid = Invited.find(self.invited_id).user_id
   	@oid = Order.find(Invited.find(self.invited_id).order_id).id
-  	ActionCable.server.broadcast 'user_channel'+@uid.to_s, data: {msg: self.message, order_id: @oid, time: self.created_at}
+  	@pic = User.find(Order.find(@oid).user_id).uimage (:thumb)
+  	ActionCable.server.broadcast 'user_channel'+@uid.to_s, data: {msg: self.message, order_id: @oid, img: @pic}
   end
 end

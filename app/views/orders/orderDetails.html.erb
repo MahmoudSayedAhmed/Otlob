@@ -1,7 +1,7 @@
 
  <h1 class=""> Order Details  <h1>
  <%= hidden_field_tag "orderId", @order.id%>
-
+ <%=hidden_field_tag  "MyId" , current_user.id %>
 <div id="ordersTable">
 <table id="orders" class="table">
   <tr>
@@ -11,6 +11,20 @@
     <th style="color: white;" data-field="Price">Price</th>
     <th style="color: white;" data-field="Comment">Comment</th>
   </tr>
+  <% @order.joineds.each do |j| %>
+    <% if j.items.size != 0 %>
+      <% j.items.each do |i| %>
+        <tr  value="<%=Joined.find(i.joined_id).user_id %>"  id="<%= i.id %>">
+        <td><%= User.find(Joined.find(i.joined_id).user_id).name %></td>
+        <td><%= i.name %></td>
+        <td><%= i.amount %></td>
+        <td><%= i.price %></td>
+        <td><%= i.comment %></td>
+        <td><button id="cancel" onclick="cancelitem(this)"> cancel </button></td>
+        </tr>
+      <% end %>
+    <% end %>
+  <% end %>
 </table>
 </div>
 

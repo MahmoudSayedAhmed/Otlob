@@ -12,10 +12,10 @@ Rails.application.routes.draw do
   resources :friendships_groups
   get 'home/index'
   get 'latestorders/', to:'orders#latestorders'
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   post '/set_friends' => 'orders#setfriends'
-  get 'orders/orderDetails' => 'orders#orderDetails'
+  get '/orders/orderDetails/:id' => 'orders#orderDetails'
   get '/InvitedFriends' => 'orders#InvitedFriends'
   post '/orderDetails' => 'orders#AddorderDetails'
   post '/addfriends' =>'friendships#addFriend'
@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   post '/orders/load' => 'orders#load'
   post '/orders/invite' => 'orders#invite'
   post '/orders/get_data' => 'orders#get_data'
+  post '/joineds/add' => 'joineds#add'
 
 
   authenticated :user do

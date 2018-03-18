@@ -128,6 +128,33 @@ function invite()
   })
 }
 
+
+
+function cancelitem(e)
+{
+ MyId=$("#MyId").val()
+ if($(e).parent().parent().attr("value") == MyId)
+ {
+   $.ajax({
+       method : 'delete',
+       url : '/items/'+$(e).parent().parent().attr('id'),
+       data: {authenticity_token:$('meta[name="csrf-token"]').attr("content")},
+       success: function(re){
+         alert("removed")
+          $(e).parent().parent().remove()
+         }
+   })
+
+ }
+ else {
+   alert("it's not your item")
+ }
+
+}
+
+
+
+
 function addItemFunct()
 {
   item=$("#item").val()
@@ -135,6 +162,7 @@ function addItemFunct()
   amount=$("#amount").val()
   comment=$("#comment").val()
   orderId=$("#orderId").val()
+  MyId=$("#MyId").val()
   $.ajax({
       method : 'post',
       url : '/orderDetails',
@@ -142,6 +170,6 @@ function addItemFunct()
       success: function(re){
           //alert("done")
           $("#orders").append("<tr style='color: white;'><td>"+re.person+"</td> <td>"+item+"</td> <td>"+amount+"</td> <td>"+price+"</td> <td>"+comment+"</td> </tr>")
-        }
+
   })
 }
