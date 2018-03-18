@@ -171,7 +171,7 @@ function addItemFunct()
       data: {orderId:orderId,item:item ,price:price, amount:amount ,comment:comment ,authenticity_token:$('meta[name="csrf-token"]').attr("content")},
       success: function(re){
           //alert("done")
-          $("#orders").append("<tr value="+MyId+"><td>"+re.person+"</td> <td>"+item+"</td> <td>"+amount+"</td> <td>"+price+"</td> <td>"+comment+"</td> <td><button id='cancel' onclick='cancelitem()'>cancel</button></td></tr>")
+          $("#orders").append("<tr style='color: white;' value="+MyId+"><td>"+re.person+"</td> <td>"+item+"</td> <td>"+amount+"</td> <td>"+price+"</td> <td>"+comment+"</td> <td><button id='cancel' onclick='cancelitem()'>cancel</button></td></tr>")
         }
   })
 }

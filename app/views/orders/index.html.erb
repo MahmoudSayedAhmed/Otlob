@@ -21,13 +21,13 @@
  
             <tr>
               <% if order.orderType == false  %>
-                <th scope="row"> BreakFast  </td>
+                <td scope="row"> BreakFast  </td>
               <% else %>
-                <th scope="row"> Lunch </td>
+                <td scope="row"> Lunch </td>
               <% end %>
               <td style="text-align: left;"><%= order.place %></td>
-              <td style="text-align: left;"><%=order.inviteds.size%></td>
-              <td style="text-align: left;"><%=order.joineds.size-1%></td>
+              <td style="text-align: left;"><%= order.inviteds.size %></td>
+              <td style="text-align: left;"><%= order.joineds.size-1 %></td>
               <% if order.status %>
               <td style="text-align: left;"> Finished </td>
               <td style="text-align: left;"><%= link_to 'view', order %></td>
@@ -49,4 +49,4 @@
               <% end %>
 <br>
 
-<%= link_to 'Start New Order', new_order_path ,:class => "etharak btn" ,:style => "margin:200px 150px; color:white; "%>
+<%= link_to 'Start New Order', new_order_path ,:class => "etharak button" ,:style => "margin:200px 150px; color:white; "%>
