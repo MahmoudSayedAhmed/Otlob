@@ -3,6 +3,9 @@
   font-family: helvetica;
   margin: 4px 1px;
 }
+.hi{
+  height: 35px;
+}
 
 .divborder{
   position: absolute;
@@ -11,6 +14,7 @@
   border-radius: 15px 50px 30px;
   margin-right: 40%;
   /*margin: 100px 100px;*/
+  
 }
 
 .footer {

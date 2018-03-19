@@ -1,26 +1,52 @@
-<h2>Log in</h2>
-
+ 
+<div class="panel-title" style="padding-left: 20%">
+  <h1 class="" style="color: white; padding-top: 30px;">Welcome To Otlob</h1>
+</div>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+ <div class="container">
+      <div class="row main">
+        <div class="col-md-12 " style="padding-left: 40% ;padding-top: 110px;">
+        <div class="panel-heading">
+                 
+              </div> 
+        <div class="main-login main-center">
+          <form class="form-horizontal" method="post" action="#">
+            
+            <div class="form-group">
+                  <%= f.label :email , :class => "cols-sm-2 control-label " %><br />
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i style="height: 10px;" class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email",:class => "control-label hi" ,placeholder: "Enter your Email" %>
+                </div>
+              </div>
+            </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+            <div class="form-group">
+                  <%= f.label :password ,:class => "cols-sm-2 control-label ",:style => "color:black;"%>
+                  <% if @minimum_password_length %>
+                  <em style="color: black;">(<%= @minimum_password_length %> characters minimum)</em>
+                  <% end %><br />
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i style="height: 10px;" class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                  <%= f.password_field :password, autocomplete: "off" ,:class =>"control-label hi" ,placeholder: "Enter your Password" %>
+                </div>
+              </div>
+            </div>
 
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end -%>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
+            <div class="form-group ">
+                  <%= f.submit "Login",:class =>"button hi" %>
+            </div>
 <% end %>
+          </form>
+        </div>
+      </div>
+    </div>            
+  </div>
 
 <%= render "devise/shared/links" %>
+  
+
+
