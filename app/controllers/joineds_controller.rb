@@ -15,6 +15,20 @@ class JoinedsController < ApplicationController
   def add
     @joined = Joined.new(:order_id => params[:oid] , :user_id => current_user.id)
     @joined.save
+    @invited = Invited.where(order_id: params[:oid], user_id: current_user.id).first
+    @event = Event.where(invited_id: @invited.id).first
+    @event.status = 1
+    @event.save
+    @uid = Order.find(params[:oid]).user_id
+    @msg = current_user.name+" joined your order"
+    ActionCable.server.broadcast 'user_channel'+@uid.to_s, data: {msg: @msg, msgType: nil}
+  end
+
+  def cancel
+    @invited = Invited.where(order_id: params[:oid], user_id: current_user.id).first
+    @event = Event.where(invited_id: @invited.id).first
+    @event.status = -1
+    @event.save
   end
 
   # GET /joineds/new
