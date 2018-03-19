@@ -1,5 +1,9 @@
 
  <h1 class=""> Order Details  <h1>
+  <div id="creatorIndo">
+    Menu
+    <%= image_tag @order.Menu.url ( :medium ) %>
+  </div>
  <%= hidden_field_tag "orderId", @order.id%>
  <%=hidden_field_tag  "MyId" , current_user.id %>
 <div id="ordersTable">

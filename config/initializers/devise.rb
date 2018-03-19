@@ -27,7 +27,8 @@ Devise.setup do |config|
   # Load and configure the ORM. Supports :active_record (default) and
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
   # available as additional gems.
-  config.omniauth :facebook, "209465596454623", "304dcad830bbbcf6068a39f94a37b4a3", callback_url: "http://localhost:3000/users/auth/facebook/callback"
+  config.omniauth :facebook, "423230568118719", "0b0b2688d7b6f3476fde34317ec81afd", callback_url: "http://localhost:3000/users/auth/facebook/callback"
+
   require 'omniauth-google-oauth2'
  config.omniauth :google_oauth2, "991228710419-nkppg4v0h2810je1i0kf9bp4npcefi86.apps.googleusercontent.com" ,"6Ei5NvjKPpGLpySZUqlGYLnr", callback_url: "http://localhost:3000/users/auth/google_oauth2/callback"
 

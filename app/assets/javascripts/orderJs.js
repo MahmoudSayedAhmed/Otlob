@@ -80,7 +80,18 @@ function finish(e){
       }
   })
 }
-$(document).on('turbolinks:load', pageload);
+$('document').ready(function ()
+{
+
+   groupNames.forEach(function(entry) {
+    $('#GroupList').append("<option value='"+entry+"'></option>")
+    });
+
+    friendsNamesList.forEach(function(entry) {
+     $('#FriendList').append("<option value='"+entry+"'></option>")
+     });
+
+});
 var pageload= function ()
 {
 

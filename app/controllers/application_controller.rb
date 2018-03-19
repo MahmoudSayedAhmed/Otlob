@@ -8,6 +8,11 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :uimage]  )
   end
 
+
+  def after_sign_in_path_for(resource)
+    request.env['omniauth.origin'] || root_path
+  end
+
   def get_notifications
   	@notifications = []
   	if current_user
