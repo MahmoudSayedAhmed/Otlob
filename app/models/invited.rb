@@ -14,7 +14,6 @@ class Invited < ApplicationRecord
  	end
  	@place = Order.find(self.order_id).place
  	@txt = @name+" invited you to "+@orderType+" from "+@place
- 	puts @txt
- 	@event = Event.create(message: @txt, invited_id: self.id)
+ 	@event = Event.create(message: @txt, invited_id: self.id, status: 0)
  end
 end

@@ -80,7 +80,18 @@ function finish(e){
       }
   })
 }
-$(document).on('turbolinks:load', pageload);
+$('document').ready(function ()
+{
+
+   groupNames.forEach(function(entry) {
+    $('#GroupList').append("<option value='"+entry+"'></option>")
+    });
+
+    friendsNamesList.forEach(function(entry) {
+     $('#FriendList').append("<option value='"+entry+"'></option>")
+     });
+
+});
 var pageload= function ()
 {
 
@@ -133,21 +144,19 @@ function invite()
 function cancelitem(e)
 {
  MyId=$("#MyId").val()
- console.log(MyId)
- console.log($(e).parent().parent().attr("value"))
- if($(e).parent().parent().attr("value") == MyId)
- {
-   $.ajax({
-       method : 'delete',
-       url : '/items/'+$(e).parent().parent().attr('id'),
-       data: {authenticity_token:$('meta[name="csrf-token"]').attr("content")},
-       success: function(re){
-         alert("removed")
-          $(e).parent().parent().remove()
-         }
-   })
+  if($(e).parent().parent().attr("value") == MyId)
+     {
+       $.ajax({
+           method : 'delete',
+           url : '/items/'+$(e).parent().parent().attr('id'),
+           data: {authenticity_token:$('meta[name="csrf-token"]').attr("content")},
+           success: function(re){
+             alert("removed")
+              $(e).parent().parent().remove()
+             }
+       })
 
- }
+     }
  else {
    alert("it's not your item")
  }

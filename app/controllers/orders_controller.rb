@@ -13,6 +13,14 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:gid])
     @order.status = 1
     @order.save
+    @inviteds = Invited.where(order_id: params[:gid])
+    if @inviteds.size !=0
+      @inviteds.each do |inv|
+        @event = Event.find_by invited_id: inv.id
+        @event.status = 5
+        @event.save
+      end
+    end
   end
 
   def invite
@@ -41,6 +49,18 @@ def InvitedFriends
     @user=User.find_by(:id => user.user_id)
     @userInvitedList.push(@user)
   end
+end
+
+
+
+def JoinedFriends
+  @userJoinedList=[]
+  @JoinedList=Joined.where(:order_id =>params[:order])
+  @JoinedList.each do |user|
+    @user=User.find_by(:id => user.user_id)
+    @userJoinedList.push(@user)
+  end
+
 end
 
   def setfriends

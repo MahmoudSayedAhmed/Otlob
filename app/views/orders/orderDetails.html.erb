@@ -1,5 +1,9 @@
 
  <h1 class=""> Order Details  <h1>
+  <div id="creatorIndo">
+    Menu
+    <%= image_tag @order.Menu.url ( :medium ) %>
+  </div>
  <%= hidden_field_tag "orderId", @order.id%>
  <%=hidden_field_tag  "MyId" , current_user.id %>
 <div id="ordersTable">
@@ -29,8 +33,8 @@
 </div>
 
 <div id="links">
-<%= link_to 'friends invited click to view', InvitedFriends_path(:order => @order.id) ,:style => "color: white;" %>
-<p><a>friends joined click to view</a></p>
+<%= link_to 'friends invited click to view', InvitedFriends_path(:order => @order.id) %> <br>
+<%= link_to 'friends Joined click to view', JoinedFriends_path(:order => @order.id) %>
 </div>
 <div class="row">
 <div class="col-md-5" id="addITem">

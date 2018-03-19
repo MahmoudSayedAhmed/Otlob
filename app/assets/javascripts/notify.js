@@ -8,3 +8,19 @@ function joinOrder(e) {
         }
 	})
 }
+
+function goOrder(e) {
+    window.location.replace("/orders/orderDetails/"+$(e).attr('id'));
+}
+
+function cancelOrder(e) {
+	$.ajax({
+		method: 'post',
+        url: '/joineds/cancel',
+        data: {oid:$(e).prev().attr('id'), authenticity_token:$('meta[name="csrf-token"]').attr("content")},
+        success: function(result){
+        	$(e).prev().remove()
+        	$(e).remove()
+        }
+	})
+}
