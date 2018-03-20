@@ -1,6 +1,7 @@
 production:
   adapter: redis
   url: redis://redistogo:ff96ac68a5c62226702d39a06f31ab4a@angelfish.redistogo.com:11742/
+  channel_prefix: deployed_production
 
 development:
   adapter: async
