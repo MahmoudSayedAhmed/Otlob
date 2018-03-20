@@ -27,13 +27,8 @@ Devise.setup do |config|
   # Load and configure the ORM. Supports :active_record (default) and
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
   # available as additional gems.
-  config.omniauth :facebook, "423230568118719", "0b0b2688d7b6f3476fde34317ec81afd", callback_url: "http://localhost:3000/users/auth/facebook/callback"
-
-  require 'omniauth-google-oauth2'
- config.omniauth :google_oauth2, "991228710419-nkppg4v0h2810je1i0kf9bp4npcefi86.apps.googleusercontent.com" ,"6Ei5NvjKPpGLpySZUqlGYLnr", callback_url: "http://localhost:3000/users/auth/google_oauth2/callback"
 
   require 'devise/orm/active_record'
-
 
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
@@ -283,4 +278,7 @@ Devise.setup do |config|
   # When using OmniAuth, Devise cannot automatically set OmniAuth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
+  config.omniauth :google_oauth2, "597043809351-1c3ljenn4tb6bik5i4gs700unsuhdpei.apps.googleusercontent.com","240YiV2U1tLllmmcynpIe-M0",callback_url: "http://localhost:3000/users/auth/google_oauth2/callback"
+  config.omniauth :facebook, "188262478451240", "a2ce94426fdb1d0648a8f4d0c6ac4861", callback_url: "http://localhost:3000/users/auth/facebook/callback"
+
 end
