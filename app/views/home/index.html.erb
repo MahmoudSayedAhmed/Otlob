@@ -1,14 +1,12 @@
 
 
-	<div class="row">
-		<div class="col-md-8 ">
+	<div class="row" style="padding-top: 10%">
+		<div class="col-md-6 " style="width: 600px;">
 			<div class="panel panel-primary">
 			    <div class="panel-heading">
 			        Latest Orders
 			    </div>
 			    <div class="panel-body">
-			        <div class="row">
-			            <div class="col-lg-12">
 			            <% if @orders.size != 0 %>
 			            	<% @orders.each do |order| %>
 								<b>
@@ -23,20 +21,14 @@
 							<br>
 						<% end %>  
 			            </div>
-			        </div>
 			    </div>
-			</div>
 		</div>
-</div>
-<div class="row">
-		<div class="col-md-4">
+		<div class="col-md-6" style="width: 600px;">
 			<div class="panel panel-primary">
 			    <div class="panel-heading">
 			        Friend's activties
 			    </div>
 			    <div class="panel-body">
-			        <div class="row">
-			            <div class="col-lg-12" style="color: black">
 			            	<% if @all.size != 0 %>
 					        	<% @all.each do |order| %>
 									<% order.each do |order|%>
@@ -48,10 +40,7 @@
 								<br>
 							<% end %>  
 			            </div>
-			        </div>
 			    </div>
-			</div>
-		</div>
 	</div>
 </div>
 
