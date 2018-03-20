@@ -2,6 +2,8 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
+    config.web_socket_server_url = "wss://stark-badlands-44253.herokuapp.com/cable" 
+    config.action_cable.allowed_request_origins = ['https://stark-badlands-44253.herokuapp.com', 'http://stark-badlands-44253.herokuapp.com']
     config.cache_classes = true
     config.serve_static_assets = true
     config.assets.compile = true
