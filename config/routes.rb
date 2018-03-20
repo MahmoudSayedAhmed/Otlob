@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   resources :friendships
   resources :orders
   resources :friendships_groups
+  resources :password_resets
+
   get 'home/index'
   get 'latestorders/', to:'orders#latestorders'
  devise_for :users , :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
